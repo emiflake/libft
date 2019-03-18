@@ -1,0 +1,3 @@
+[submodule "tests/emitest"]
+	path = tests/emitest
+	url = git@github.com:emiflake/emitest.git
