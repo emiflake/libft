@@ -15,18 +15,17 @@
 #############
 
 # configure
-NAME=libft.a
+NAME=test.out
 
-OBJECT_NAMES=ft_memset \
-			 ft_bzero \
-			 ft_memcpy \
-			 ft_memccpy \
-			 ft_strlen
+OBJECT_NAMES=run_all \
+			 emitest/emitest
+
+LIBFT=libft.a
 
 # do not configure
 CC=gcc
-INCLUDES=-I./includes
-SRC=./srcs
+INCLUDES=-I./includes/ -I./emitest/
+SRC=./
 CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 OK_COLOR=\x1b[32;01m
@@ -35,33 +34,39 @@ RESET=\e[0m
 #########
 # rules #
 #########
-all: print_header $(NAME)
-
-print_header:
-	@echo -e "$(OK_COLOR)"
-	@echo -e "o-----------------o"
-	@echo -e "| Making libft... |"
-	@echo -e "o-----------------o"
-	@echo -e "$(RESET)"
+all: $(NAME)
 
 debug: $(OBJECTS)
 	$(CC) -o $(NAME) $^ $(CFLAGS) -g
 
-$(NAME): $(OBJECTS)
-	@ar rcs $@ $^
-	@ranlib $@
+test: re
+	@./$(NAME)
+
+$(LIBFT):
+	@make -s -C .. re
+	@echo "Copying to tests..."
+	@cp ../libft.a .
+	@cp ../includes/libft.h ./includes/
+
+$(NAME): $(OBJECTS) $(LIBFT)
+	@echo "Making tests"
+	@$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: $(SRC)/%.c
-	@echo -e "Making object \e[4m$^$(RESET)"
+	@echo "Making object $^"
 	@$(CC) -c -o $@ $^ $(CFLAGS)
 
 clean:
 	@echo "Cleaning objects"
 	@rm -rf $(OBJECTS)
 
+ftclean:
+	@echo "Cleaning libft"
+	@rm -rf $(LIBFT)
+
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@rm -rf $(NAME)
 
-re: fclean all
+re: fclean ftclean all
 
