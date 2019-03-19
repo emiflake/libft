@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_memchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -12,17 +12,16 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	int count;
+	size_t		count;
+	const char	*s;
 
+	s = str;
 	count = 0;
-	if (!s)
-		return (0);
-	while (*s)
+	while (count < n && s[count] != c)
 	{
 		count++;
-		s++;
 	}
-	return (count);
+	return (void*)(str + count);
 }

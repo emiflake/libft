@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -12,17 +12,29 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	int count;
+#include <stdlib.h>
 
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char		*tmp;
+	const char	*s;
+	char		*d;
+	size_t		count;
+
+	s = src;
+	d = dest;
+	tmp = malloc(n);
 	count = 0;
-	if (!s)
-		return (0);
-	while (*s)
+	while (count < n)
 	{
+		tmp[count] = s[count];
 		count++;
-		s++;
 	}
-	return (count);
+	count = 0;
+	while (count < n)
+	{
+		d[count] = tmp[count];
+		count++;
+	}
+	return (dest);
 }

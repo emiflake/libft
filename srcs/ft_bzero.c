@@ -15,5 +15,5 @@
 void	ft_bzero(void *ptr, size_t n)
 {
 	while (n > 0)
-		((char*)ptr)[n--] = 0;
+		((char*)ptr)[--n] = 0;
 }

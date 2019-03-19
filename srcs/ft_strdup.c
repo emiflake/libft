@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -12,17 +12,15 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	int count;
+#include <stdlib.h>
 
-	count = 0;
-	if (!s)
-		return (0);
-	while (*s)
-	{
-		count++;
-		s++;
-	}
-	return (count);
+char	*ft_strdup(char *str)
+{
+	size_t	len;
+	char	*out;
+
+	len = ft_strlen(str);
+	out = (char*)malloc(sizeof(char) * (len + 1));
+	ft_memcpy(out, str, len + 1);
+	return (out);
 }
