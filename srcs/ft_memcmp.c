@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -12,17 +12,18 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int count;
+	size_t		i;
+	const char *a;
+	const char *b;
 
-	count = 0;
-	if (!s)
+	i = 0;
+	if (!s1 && !s2)
 		return (0);
-	while (*s)
-	{
-		count++;
-		s++;
-	}
-	return (count);
+	a = s1;
+	b = s2;
+	while (i < n && a[i] == b[i])
+		i++;
+	return (a[i] - b[i]);
 }

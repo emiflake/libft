@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -12,17 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strnew(size_t size)
 {
-	int count;
-
-	count = 0;
-	if (!s)
-		return (0);
-	while (*s)
-	{
-		count++;
-		s++;
-	}
-	return (count);
+	
 }

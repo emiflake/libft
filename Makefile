@@ -21,7 +21,11 @@ OBJECT_NAMES=ft_memset \
 			 ft_bzero \
 			 ft_memcpy \
 			 ft_memccpy \
-			 ft_strlen
+			 ft_memmove \
+			 ft_memchr \
+			 ft_memcmp \
+			 ft_strlen \
+			 ft_strdup
 
 # do not configure
 CC=gcc
