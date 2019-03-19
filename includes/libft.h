@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/02/26 17:43:11 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/19 18:14:03 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(char *str);
 void	*ft_memalloc(size_t size);
-char	*ft_strnew(size_t size);	
+char	*ft_strnew(size_t size);
 
 #endif
-

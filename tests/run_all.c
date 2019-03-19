@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   run_all.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/19 18:20:31 by nmartins      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 #include "emitest.h"
 
-int main(void)
+int	main(void)
 {
 	emi_init("libft unit tests");
 

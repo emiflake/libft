@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/02/26 17:43:11 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/19 18:16:07 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t		i;
-	const char *a;
-	const char *b;
+	const char	*a;
+	const char	*b;
 
 	i = 0;
 	if (!s1 && !s2)
