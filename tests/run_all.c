@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 18:39:41 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/20 19:01:03 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,13 +151,15 @@ int	main(void)
 		emi_assert_i(ft_strchr(0, 'z') == 0, "null input");
 	}
 
-	emi_trial("strstr");
+	emi_trial("strstr & strnstr");
 	{
 		char *src = "hello, world";
 
 		emi_assert(strcmp(ft_strstr(src, "w"), "world") == 0);
 		emi_assert(strcmp(ft_strstr(src, "lo"), "lo, world") == 0);
 		emi_assert(strcmp(ft_strstr(src, ""), src) == 0);
+		emi_assert(ft_strnstr(src, "w", 1) == 0);
+		emi_assert(strcmp(ft_strnstr(src, "w", 10), "world") == 0);
 	}
 
 	emi_trial("strcmp & strncmp");
@@ -170,7 +172,7 @@ int	main(void)
 		emi_assert(ft_strcmp("", "") == strcmp("", ""));
 		emi_assert(ft_strcmp(s1, "") == strcmp(s1, ""));
 		emi_assert(ft_strcmp("", s2) == strcmp("", s2));
-		emi_assert(ft_strncmp(s1, s2, 0) == 0);
+		emi_assert_i(ft_strncmp(s1, s2, 0) == 0, "zero length search");
 		emi_assert(ft_strncmp(s1, s2, 5) == strncmp(s1, s2, 5));
 	}
 

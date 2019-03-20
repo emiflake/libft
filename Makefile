@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/20 18:39:56 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/20 19:26:51 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ OBJECT_NAMES=ft_memset \
 			 ft_strstr \
 			 ft_strnstr \
 			 ft_strcmp \
-			 ft_strncmp
+			 ft_strncmp \
+			 ft_atoi
 			 
 
 # do not configure
