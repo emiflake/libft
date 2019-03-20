@@ -29,8 +29,8 @@ OBJECT_NAMES=ft_memset \
 
 # do not configure
 CC=gcc
-INCLUDES=-I./includes
-SRC=./srcs
+INCLUDES=-I./
+SRC=./
 CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 OK_COLOR=\x1b[32;01m
