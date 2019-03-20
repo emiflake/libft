@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "libft.h"
 #include "emitest.h"
 
@@ -174,6 +176,22 @@ int	main(void)
 		emi_assert(ft_strcmp("", s2) == strcmp("", s2));
 		emi_assert_i(ft_strncmp(s1, s2, 0) == 0, "zero length search");
 		emi_assert(ft_strncmp(s1, s2, 5) == strncmp(s1, s2, 5));
+	}
+
+	emi_trial("is***");
+	{
+		emi_assert(ft_isalpha('H'));
+		emi_assert(!ft_isalpha('*'));
+		emi_assert(ft_isdigit('0'));
+		emi_assert(ft_isdigit('9'));
+		emi_assert(!ft_isdigit('a'));
+		emi_assert(!ft_isdigit('*'));
+		emi_assert(ft_isascii('$'));
+		emi_assert(!ft_isascii(2000));
+		emi_assert(!ft_isascii(-5));
+		emi_assert(!ft_isprint('\t'));
+		emi_assert(ft_isprint(' '));
+		emi_assert(ft_isprint('@'));
 	}
 
 	emi_debrief();
