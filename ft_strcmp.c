@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memcpy.c                                        :+:    :+:            */
+/*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 17:58:39 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/20 18:30:39 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/20 18:39:26 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copies byte by byte from src -> dest, for n bytes
-** We use char* because char is one byte
-*/
-
-void	ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t		counter;
-	const char	*s;
-	char		*d;
+	int				i;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
-	s = src;
-	d = dest;
-	counter = 0;
-	while (counter < n)
+	i = 0;
+	us1 = (unsigned char*)s1;
+	us2 = (unsigned char*)s2;
+	while (us1[i] && us2[i] && us1[i] == us2[i])
 	{
-		d[counter] = s[counter];
-		counter++;
+		i++;
 	}
+	return (us1[i] - us2[i]);
 }

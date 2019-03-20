@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/19 12:01:30 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/20 17:20:00 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT=libft.a
 
 # do not configure
 CC=gcc
-INCLUDES=-I./includes/ -I./emitest/
+INCLUDES=-I./ -I./emitest/
 SRC=./
 CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
@@ -36,8 +36,8 @@ RESET=\e[0m
 #########
 all: $(NAME)
 
-debug: $(OBJECTS)
-	$(CC) -o $(NAME) $^ $(CFLAGS) -g
+debug: $(LIBFT) $(OBJECTS)
+	$(CC) -o $(NAME) $(OBJECTS) $(LIBFT) $(CFLAGS) -g
 
 test: re
 	@./$(NAME)
@@ -46,11 +46,11 @@ $(LIBFT):
 	@make -s -C .. re
 	@echo "Copying to tests..."
 	@cp ../libft.a .
-	@cp ../includes/libft.h ./includes/
+	@cp ../libft.h ./
 
-$(NAME): $(OBJECTS) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJECTS)
 	@echo "Making tests"
-	@$(CC) -o $@ $^ $(CFLAGS)
+	@$(CC) -o $@ $(OBJECTS) $(LIBFT) $(CFLAGS)
 
 %.o: $(SRC)/%.c
 	@echo "Making object $^"

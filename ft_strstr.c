@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memcpy.c                                        :+:    :+:            */
+/*   ft_strstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 17:58:39 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/20 18:08:03 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/20 18:28:49 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copies byte by byte from src -> dest, for n bytes
-** We use char* because char is one byte
-*/
-
-void	ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	size_t		counter;
-	const char	*s;
-	char		*d;
+	char *is;
+	char *js;
+	char *lookback;
 
-	s = src;
-	d = dest;
-	counter = 0;
-	while (counter < n)
+	is = (char*)haystack;
+	while (*is)
 	{
-		d[counter] = s[counter];
-		counter++;
+		lookback = is;
+		js = (char*)needle;
+		while (*is && *js && *is == *js)
+		{
+			is++;
+			js++;
+		}
+		if (!*js)
+			return (lookback);
+		is = lookback + 1;
 	}
+	return (0);
 }
