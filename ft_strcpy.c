@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memcpy.c                                        :+:    :+:            */
+/*   ft_strcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 17:58:39 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/20 17:04:23 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/20 18:23:04 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copies byte by byte from src -> dest, for n bytes
-** We use char* because char is one byte
-*/
-
-void	ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t		counter;
-	const char	*s;
-	char		*d;
+	int i;
 
-	s = src;
-	d = dest;
-	counter = 0;
-	while (counter < n)
+	if (!dst)
+		return (0);
+	if (!src)
+		return (dst);
+	i = 0;
+	while (src[i])
 	{
-		d[counter] = s[counter];
-		counter++;
+		dst[i] = src[i];
+		i++;
 	}
+	dst[i] = src[i];
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/19 18:20:31 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/20 18:39:41 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 int	main(void)
 {
 	emi_init("libft unit tests");
+
+	emi_trial("First, we check norm");
+	emi_norm("../*.c");
 
 	emi_trial("memset");
 	{
@@ -120,8 +123,55 @@ int	main(void)
 		char *str = "hello, world";
 
 		emi_assert(ft_strlen(str) == 12);
+		emi_assert(ft_strlen(str) == strlen(str));
 		emi_assert_i(ft_strlen("") == 0, "empty string");
 		emi_assert_i(ft_strlen(0) == 0, "NULL");
+	}
+
+	emi_trial("strcpy");
+	{
+		char *src = "hello";
+		char dest[40];
+
+		ft_strcpy(dest, src);
+		emi_assert(strcmp(dest, "hello") == 0);
+		ft_bzero(dest, 40);
+		strcpy(dest, src);
+		emi_assert_i(strcmp(dest, "hello") == 0, "libc version, sanity check");
+		ft_strcpy(0, 0);
+		ft_strcpy(0, src);
+	}
+
+	emi_trial("strchr");
+	{
+		char *src = "hello, world";
+
+		emi_assert(strcmp(ft_strchr(src, 'w'), "world") == 0);
+		emi_assert(ft_strchr(src, 'z') == 0);
+		emi_assert_i(ft_strchr(0, 'z') == 0, "null input");
+	}
+
+	emi_trial("strstr");
+	{
+		char *src = "hello, world";
+
+		emi_assert(strcmp(ft_strstr(src, "w"), "world") == 0);
+		emi_assert(strcmp(ft_strstr(src, "lo"), "lo, world") == 0);
+		emi_assert(strcmp(ft_strstr(src, ""), src) == 0);
+	}
+
+	emi_trial("strcmp & strncmp");
+	{
+		char *s1 = "hello, world";
+		char *s2 = "hello, wòrld";
+
+		emi_assert(ft_strcmp(s1, s2) == strcmp(s1, s2));
+		emi_assert(ft_strcmp(s2, s1) == strcmp(s2, s1));
+		emi_assert(ft_strcmp("", "") == strcmp("", ""));
+		emi_assert(ft_strcmp(s1, "") == strcmp(s1, ""));
+		emi_assert(ft_strcmp("", s2) == strcmp("", s2));
+		emi_assert(ft_strncmp(s1, s2, 0) == 0);
+		emi_assert(ft_strncmp(s1, s2, 5) == strncmp(s1, s2, 5));
 	}
 
 	emi_debrief();

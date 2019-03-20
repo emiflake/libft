@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/19 12:21:22 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/20 18:39:56 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,14 @@ OBJECT_NAMES=ft_memset \
 			 ft_memchr \
 			 ft_memcmp \
 			 ft_strlen \
-			 ft_strdup
+			 ft_strdup \
+			 ft_strcpy \
+			 ft_strchr \
+			 ft_strstr \
+			 ft_strnstr \
+			 ft_strcmp \
+			 ft_strncmp
+			 
 
 # do not configure
 CC=gcc

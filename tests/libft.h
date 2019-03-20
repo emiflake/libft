@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 18:39:20 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/20 18:33:33 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_strnew(size_t size);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strchr(const char *haystack, int needle);
 char	*ft_strstr(const char *haystack, const char *needle);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
