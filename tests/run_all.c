@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 13:36:08 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 19:12:56 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <ctype.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <limits.h>
 #include "libft.h"
 #include "emitest.h"
 
@@ -157,13 +158,69 @@ int	main(void)
 		emi_assert_i(memcmp(dest3, dest4, 40) == 0, "libc version for strncpy");
 	}
 	
-	emi_trial("strcat & strncat");
+	emi_trial("strcat");
 	{
 		char str[50] = "Hello ";
+		char str3[50] = "Hello ";
 		char str2[50] = "World!";
+		strcat(str3, str2);
+		strcat(str3, " ... ");
+		strcat(str3, "Goodbye World!");
 		ft_strcat(str, str2);
+		ft_strcat(str, " ... ");
+		ft_strcat(str, "Goodbye World!");
 		emi_assert(strcmp(str, "Hello World! ... Goodbye World!") == 0);
-		printf("'%s'\n", str);
+		emi_assert(memcmp(str3, str, 50) == 0);
+		emi_assert(strcmp(str2, "World!") == 0);
+	}
+
+	emi_trial("strncat");
+	{
+		char str[50] = "Hello ";
+		char str2[50] = "Hello ";
+		strncat(str2, "Goodbye World!", 4);
+		strncat(str2, " World!", 7);
+		ft_strncat(str, "Goodbye World!", 4);
+		ft_strncat(str, " World!", 7);
+		emi_assert(memcmp(str, str2, 50) == 0);
+
+		char bye[10] = "bye ";
+		ft_strncat(bye, bye, 3);
+		emi_assert(strcmp(bye, "bye bye") == 0);
+	}
+
+	emi_trial("strlcat");
+	{
+		{	
+			char str[50] = "Ok, cool! I am big";
+			char str2[50] = "Ok, cool! I am big";
+			printf("in emi_trial: '%s'\n", str2);
+			size_t res = strlcat((char*)str, "Goodbye World!", 10);
+			size_t res2 = ft_strlcat((char*)str2, "Goodbye World!", 10);
+			emi_assert(memcmp(str, str2, 50) == 0);
+			emi_assert(res == res2);
+			printf("#(%lu) vs #(%lu)\n", res, res2);
+		}
+		{	
+			char str[50] = "Ok, cool!";
+			char str2[50] = "Ok, cool!";
+			printf("in emi_trial: '%s'\n", str2);
+			size_t res = strlcat((char*)str, "Go\0odbye World!", 10);
+			size_t res2 = ft_strlcat((char*)str2, "Go\0odbye World!", 10);
+			emi_assert(memcmp(str, str2, 50) == 0);
+			emi_assert(res == res2);
+			printf("#(%lu) vs #(%lu)\n", res, res2);
+		}
+		{	
+			char str[50] = "Ok, cool!";
+			char str2[50] = "Ok, cool!";
+			printf("in emi_trial: '%s'\n", str2);
+			size_t res = strlcat((char*)str, "Goodbye World!", 50);
+			size_t res2 = ft_strlcat((char*)str2, "Goodbye World!", 50);
+			emi_assert(memcmp(str, str2, 50) == 0);
+			emi_assert(res == res2);
+			printf("#(%lu) vs #(%lu)\n", res, res2);
+		}
 	}
 
 	emi_trial("strchr & strrchr");
@@ -262,6 +319,16 @@ int	main(void)
 		ft_putchar('x');
 		ft_putchar('\n');
 		ft_putendl("we are alive");
+		ft_putnbr(INT_MIN);
+		ft_putchar('\n');
+		ft_putnbr(INT_MAX);
+		ft_putchar('\n');
+		ft_putnbr(-123);
+		ft_putchar('\n');
+		ft_putnbr(123);
+		ft_putchar('\n');
+		ft_putnbr(0);
+		ft_putchar('\n');
 
 		int fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 		printf("debug fd: <%d>\n", fd);
@@ -294,6 +361,37 @@ int	main(void)
 		emi_assert(copy != mystr);
 		emi_assert(strcmp(copy, mystr) == 0);
 		emi_assert(memcmp(copy, mystr, 10) != 0);
+	}
+
+	emi_trial("ft_strclr");
+	{
+		char mystr[] = "hi, world";
+		char *mystr2 = ft_strnew(10); 
+		ft_strclr(mystr);
+		ft_strclr(0);
+		emi_assert(memcmp(mystr, mystr2, 10) == 0);
+	}
+
+	emi_trial("ft_striter & ft_striteri");
+	{
+		void ft_make_upper(char *c);
+		void ft_sponge(unsigned int i, char *c);
+	
+		char str[] = "hello, world";
+
+		ft_striter(str, ft_make_upper);
+		emi_assert(strcmp(str, "HELLO, WORLD") == 0);
+
+		ft_striteri(str, ft_sponge);
+		emi_assert(strcmp(str, "HeLlO, wOrLd") == 0);
+	}
+
+	emi_trial("Ft_strtoup & ft_strtolo");
+	{
+		char str[] = "mixed Case is Me";
+
+		emi_assert(strcmp(ft_strtolo(str), "mixed case is me") == 0);
+		emi_assert(strcmp(ft_strtoup(str), "MIXED CASE IS ME") == 0);
 	}
 
 	emi_debrief();

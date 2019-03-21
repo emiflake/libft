@@ -6,26 +6,25 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/21 13:28:47 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 13:35:17 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 17:26:46 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-# include <stdio.h>
-
 char	*ft_strcat(char *s1, const char *s2)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (s1[i])
 		i++;
-	while (s2[i])
+	j = 0;
+	while (s2[j])
 	{
-		printf("#%d => %c\n", i, s2[i]);
-		s1[i] = s2[i];
-		i++;
+		s1[i + j] = s2[j];
+		j++;
 	}
 	return (s1);
 }

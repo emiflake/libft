@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/20 17:20:00 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/21 18:38:35 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@
 NAME=test.out
 
 OBJECT_NAMES=run_all \
+			 helper \
 			 emitest/emitest
 
 LIBFT=libft.a

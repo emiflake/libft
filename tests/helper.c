@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_toupper.c                                       :+:    :+:            */
+/*   helper.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 12:20:39 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 19:10:27 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/21 18:37:27 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/21 19:12:02 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_putchar_ptr(char *chr_ptr)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+	ft_putchar(*chr_ptr);
+}
+
+void ft_make_upper(char *c)
+{
+	*c = ft_toupper(*c);
+}
+
+void ft_sponge(unsigned int i, char *c)
+{
+	if (i % 2 == 0)
+		*c = ft_toupper(*c);
 	else
-		return (c);
+		*c = ft_tolower(*c);
 }
