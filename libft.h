@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 19:24:58 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 19:49:39 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem)); // TODO
 
 char			*ft_strtoup(char *str);
 char			*ft_strtolo(char *str);
-char			*ft_str_take_while(char *source, int (*f)(int));
-char			*ft_str_drop_while(char *source, int (*f)(int));
+char			*ft_str_take_while(const char *source, int (*f)(int));
+char			*ft_str_drop_while(const char *source, int (*f)(int));
 int				ft_iswhite(int c);
 void			ft_print_memory(void *addr, size_t size); // TODO
 int				ft_atoi_base_i(char *str, int base); // TODO
@@ -122,7 +122,7 @@ int				ft_atoi_base_s(char *str, char *base); // TODO
 char			*ft_itoa_base_i(int n, int base); // TODO
 char			*ft_itoa_base_s(int n, char *base); // TODO
 
-void			*ft_foldr(
+void			*ft_foldr1(
 					t_list *lst,
 					void *(*reductor(void *, size_t, void*))); // TODO
 
