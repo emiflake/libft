@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 19:12:56 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 21:01:42 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <limits.h>
 #include "libft.h"
 #include "emitest.h"
+
 
 int	main(void)
 {
@@ -392,6 +393,30 @@ int	main(void)
 
 		emi_assert(strcmp(ft_strtolo(str), "mixed case is me") == 0);
 		emi_assert(strcmp(ft_strtoup(str), "MIXED CASE IS ME") == 0);
+	}
+
+	emi_trial("ft_strequ & ft_strnequ");
+	{
+		char s1[] = "hello, world";
+		char s2[] = "hello, universe";
+
+		emi_assert(!ft_strequ(s1, s2));
+		emi_assert(ft_strequ(s1, ft_strdup(s1)));
+		emi_assert(ft_strnequ(s1, s2, 6));
+		emi_assert(!ft_strnequ(s1, s2, 8));
+	}
+	
+	emi_trial("ft_strmap & ft_strmapi");
+	{
+		char ft_toupper_c(char);
+		char ft_tolower_c(char);
+		char s1[] = "Hello, World";
+
+		printf("'%s'\n", ft_strmap(s1, ft_toupper_c));
+
+		emi_assert(strcmp(ft_strmap(s1, ft_toupper_c), "HELLO, WORLD") == 0);
+		emi_assert(strcmp(ft_strmap(s1, ft_tolower_c), "hello, world") == 0);
+		emi_assert(2 == 3);
 	}
 
 	emi_debrief();
