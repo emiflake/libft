@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 19:01:03 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 13:36:08 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,21 +132,38 @@ int	main(void)
 		emi_assert_i(ft_strlen(0) == 0, "NULL");
 	}
 
-	emi_trial("strcpy");
+	emi_trial("strcpy & strncpy");
 	{
-		char *src = "hello";
+		char *src = "hallo";
 		char dest[40];
 		char dest2[40];
 
 		ft_bzero(dest, 40);
 		ft_strcpy(dest, src);
-		emi_assert(strcmp(dest, "hello") == 0);
+		emi_assert(strcmp(dest, "hallo") == 0);
 		ft_bzero(dest2, 40);
 		strcpy(dest2, src);
 		emi_assert_i(memcmp(dest, dest2, 40) == 0, "libc version, sanity check");
 
 		ft_strcpy(0, 0);
 		ft_strcpy(0, src);
+
+		char dest3[40];
+		char dest4[40];
+		ft_bzero(dest3, 40);
+		ft_bzero(dest4, 40);
+		ft_strncpy(dest3, src, 4);
+		strncpy(dest4, src, 4);
+		emi_assert_i(memcmp(dest3, dest4, 40) == 0, "libc version for strncpy");
+	}
+	
+	emi_trial("strcat & strncat");
+	{
+		char str[50] = "Hello ";
+		char str2[50] = "World!";
+		ft_strcat(str, str2);
+		emi_assert(strcmp(str, "Hello World! ... Goodbye World!") == 0);
+		printf("'%s'\n", str);
 	}
 
 	emi_trial("strchr & strrchr");
@@ -256,6 +273,27 @@ int	main(void)
 		printf("---- END  ----\n");
 		printf(" ==> also ensure that the files have been modified: 'test.txt'\n");
 		printf(" ==> contents should match the printed text above");
+	}
+
+	emi_trial("ft_memalloc & ft_memdel & ft_strnew");
+	{
+		int *ns = ft_memalloc(sizeof(int));
+		*ns = 10;
+		emi_assert_i(ns != 0, "test base");
+		ft_memdel((void**)&ns);
+		emi_assert(ns == NULL);
+		ns = ft_memalloc(sizeof(int) * 10000000000000000);
+		emi_assert_i(ns == 0, "too much mem");
+
+		ft_memdel((void**)&ns);
+		emi_assert(ns == NULL);
+
+		char *mystr = "hello";
+		char *copy = ft_strnew(10);
+		ft_strcpy(copy, mystr);
+		emi_assert(copy != mystr);
+		emi_assert(strcmp(copy, mystr) == 0);
+		emi_assert(memcmp(copy, mystr, 10) != 0);
 	}
 
 	emi_debrief();

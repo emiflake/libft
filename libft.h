@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/20 19:26:46 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 13:24:19 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(char *str);
 char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strncpy(char *dst, const char *src, size_t len); // TODO
+char	*ft_strncpy(char *dst, const char *src, size_t len);
 char	*ft_strcat(char *s1, const char *s2); // TODO
 char	*ft_strlcat(char *dst, const char *src, size_t size); // TODO
 char	*ft_strncat(char *s1, const char *s2, size_t n); // TODO
@@ -52,9 +52,9 @@ int		ft_tolower(int c);
 */
 
 void	*ft_memalloc(size_t size);
-void	*ft_memdel(void **ap); // TODO
+void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);
-void	ft_strdel(char **as); // TODO
+void	ft_strdel(char **as);
 void	ft_strclr(char *s); // TODO
 void	ft_striter(char *s, void (*f)(char *)); // TODO
 void	ft_striteri(char *s, void (*f)(unsigned int, char *)); // TODO
