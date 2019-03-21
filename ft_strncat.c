@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putchar_fd.c                                    :+:    :+:            */
+/*   ft_strncat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 11:34:45 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 11:34:52 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/21 13:32:10 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/21 13:33:02 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <unistd.h>
-
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	write(fd, &c, 1);
+	(void)s2;
+	(void)n;
+	return (s1);
 }

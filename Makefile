@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/20 19:26:51 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/21 13:28:41 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ OBJECT_NAMES=ft_memset \
 			 ft_strlen \
 			 ft_strdup \
 			 ft_strcpy \
+			 ft_strncpy \
+			 ft_strcat \
+			 ft_strncat \
 			 ft_strchr \
 			 ft_strrchr \
 			 ft_strstr \
@@ -42,6 +45,7 @@ OBJECT_NAMES=ft_memset \
 			 ft_tolower \
 			 ft_toupper \
 			 ft_memalloc \
+			 ft_memdel \
 			 ft_strnew \
 			 ft_putchar \
 			 ft_putstr \
