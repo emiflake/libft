@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include "libft.h"
 #include "emitest.h"
 
@@ -134,23 +136,28 @@ int	main(void)
 	{
 		char *src = "hello";
 		char dest[40];
+		char dest2[40];
 
+		ft_bzero(dest, 40);
 		ft_strcpy(dest, src);
 		emi_assert(strcmp(dest, "hello") == 0);
-		ft_bzero(dest, 40);
-		strcpy(dest, src);
-		emi_assert_i(strcmp(dest, "hello") == 0, "libc version, sanity check");
+		ft_bzero(dest2, 40);
+		strcpy(dest2, src);
+		emi_assert_i(memcmp(dest, dest2, 40) == 0, "libc version, sanity check");
+
 		ft_strcpy(0, 0);
 		ft_strcpy(0, src);
 	}
 
-	emi_trial("strchr");
+	emi_trial("strchr & strrchr");
 	{
 		char *src = "hello, world";
 
 		emi_assert(strcmp(ft_strchr(src, 'w'), "world") == 0);
 		emi_assert(ft_strchr(src, 'z') == 0);
 		emi_assert_i(ft_strchr(0, 'z') == 0, "null input");
+		emi_assert_i(strcmp(ft_strchr(src, 'o'), "o, world") == 0, "strchr the beginning");
+		emi_assert_i(strcmp(ft_strrchr(src, 'o'), "orld") == 0, "strrchr the end");
 	}
 
 	emi_trial("strstr & strnstr");
@@ -178,7 +185,7 @@ int	main(void)
 		emi_assert(ft_strncmp(s1, s2, 5) == strncmp(s1, s2, 5));
 	}
 
-	emi_trial("is***");
+	emi_trial("is*****");
 	{
 		emi_assert(ft_isalpha('H'));
 		emi_assert(!ft_isalpha('*'));
@@ -192,6 +199,63 @@ int	main(void)
 		emi_assert(!ft_isprint('\t'));
 		emi_assert(ft_isprint(' '));
 		emi_assert(ft_isprint('@'));
+		emi_assert(ft_iswhite(' '));
+		emi_assert(ft_iswhite('\t'));
+		emi_assert(ft_iswhite('\r'));
+		emi_assert(ft_iswhite('\n'));
+		emi_assert(!ft_iswhite('@'));
+	}
+
+	emi_trial("drop & take while");
+	{
+		char *original = "hello, world";
+		char *w1 = ft_str_drop_while(original, ft_isalpha);
+
+		emi_assert(strcmp(w1, ", world") == 0);
+		emi_assert_i(w1 != ft_strchr(original, ','), "actually makes a copy");
+
+		char *w2 = ft_str_take_while(original, ft_isalpha);
+
+		emi_assert(strcmp(w2, "hello") == 0);
+		emi_assert_i(w2 != original, "actually makes a copy");
+	}
+
+	emi_trial("atoi");
+	{
+		emi_assert_i(ft_atoi("100") == 100, "100");
+		emi_assert_i(ft_atoi("-100") == -100, "-100");
+		emi_assert_i(ft_atoi("0") == 0, "0");
+		emi_assert_i(ft_atoi("123abc123") == 123, "123");
+		emi_assert_i(ft_atoi("           \t+69") == 69, "whitespace for +69");
+		emi_assert_i(ft_atoi("\n\n1\t2") == 1, "weird whitespace around 1");
+		emi_assert_i(ft_atoi("+2147483647") == 2147483647, "int_max");
+		emi_assert_i(ft_atoi("-2147483648") == -2147483648, "int_min");
+		emi_assert_i(ft_atoi("-2147483648") == atoi("-2147483648"), "comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("+2147483647") == atoi("+2147483647"), "comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("-21474836481") == atoi("-21474836481"), "comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("               \t+69") == atoi("               \t+69"), "comparison to atoi with edge cases");
+	}
+
+	emi_trial("manual tests");
+	{
+		printf(" ==> the following are manual tests, please ensure they are checked correctly before handing it in\n");
+		printf("---- START ----\n");
+
+		ft_putstr("test the world\n");
+		ft_putchar('x');
+		ft_putchar('\n');
+		ft_putendl("we are alive");
+
+		int fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+		printf("debug fd: <%d>\n", fd);
+		ft_putstr_fd("test the world\n", fd);
+		ft_putchar_fd('x', fd);
+		ft_putchar_fd('\n', fd);
+		ft_putendl_fd("we are alive", fd);
+		
+		printf("---- END  ----\n");
+		printf(" ==> also ensure that the files have been modified: 'test.txt'\n");
+		printf(" ==> contents should match the printed text above");
 	}
 
 	emi_debrief();
