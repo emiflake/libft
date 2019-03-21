@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/21 19:24:51 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/21 20:44:18 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,10 @@ OBJECT_NAMES=ft_memset \
 			 ft_strclr \
 			 ft_striter \
 			 ft_striteri \
+			 ft_strmap \
+			 ft_strmapi \
+			 ft_strequ \
+			 ft_strnequ \
 			 ft_putchar \
 			 ft_putstr \
 			 ft_putendl \

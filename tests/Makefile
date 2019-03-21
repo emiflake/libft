@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/21 18:38:35 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/21 20:27:45 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ test: re
 	@./$(NAME)
 
 $(LIBFT):
-	@make -s -C .. re
+	@make -s -C ..
 	@echo "Copying to tests..."
 	@cp ../libft.a .
 	@cp ../libft.h ./

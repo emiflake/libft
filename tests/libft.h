@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 19:10:36 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/21 20:42:27 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
-void			ft_striteri(char *s, void (*f)(unsigned int, char *)); // TODO
+void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 char			*ft_strmap(char const *s, char (*f)(char)); // TODO
 char			*ft_strmapi(
 					char const *s,
 					char (*f)(unsigned int, char)); // TODO
-int				ft_strequ(char const *s1, char const *s2); // TODO
-int				ft_strnequ(char const *s1, char const *s2, size_t n); // TODO
+int				ft_strequ(char const *s1, char const *s2);
+int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strub(
 					char const *s,
 					unsigned int start, size_t len); // TODO
@@ -113,8 +113,8 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem)); // TODO
 
 char			*ft_strtoup(char *str);
 char			*ft_strtolo(char *str);
-char			*ft_str_take_while(char *source, int (*f)(int));
-char			*ft_str_drop_while(char *source, int (*f)(int));
+char			*ft_str_take_while(const char *source, int (*f)(int));
+char			*ft_str_drop_while(const char *source, int (*f)(int));
 int				ft_iswhite(int c);
 void			ft_print_memory(void *addr, size_t size); // TODO
 int				ft_atoi_base_i(char *str, int base); // TODO
@@ -122,7 +122,7 @@ int				ft_atoi_base_s(char *str, char *base); // TODO
 char			*ft_itoa_base_i(int n, int base); // TODO
 char			*ft_itoa_base_s(int n, char *base); // TODO
 
-void			*ft_foldr(
+void			*ft_foldr1(
 					t_list *lst,
 					void *(*reductor(void *, size_t, void*))); // TODO
 
