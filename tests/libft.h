@@ -33,19 +33,19 @@ char	*ft_strcat(char *s1, const char *s2); // TODO
 char	*ft_strlcat(char *dst, const char *src, size_t size); // TODO
 char	*ft_strncat(char *s1, const char *s2, size_t n); // TODO
 char	*ft_strchr(const char *haystack, int needle);
-char	*ft_strrchr(const char *s, int c); // TODO
+char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_atoi(const char *str); // TODO
-int		ft_isalpha(int c); // TODO
-int		ft_isdigit(int c); // TODO
-int		ft_isalnum(int c); // TODO
-int		ft_isascii(int c); // TODO
-int		ft_isprint(int c); // TODO
-int		ft_toupper(int c); // TODO
-int		ft_tolower(int c); // TODO
+int		ft_atoi(const char *str);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 /*
 ** Section extra
@@ -79,6 +79,7 @@ void	ft_putnbr_fd(int n, int fd); // TODO
 /*
 ** Section lists
 */
+
 typedef struct	s_list
 {
 	void			*content;
@@ -89,6 +90,13 @@ typedef struct	s_list
 /*
 ** Section personal
 */
-void	*ft_take_while(void *source, int (*f)(void*)); // TODO
-void	*ft_drop_while(void *source, int (*f)(void*)); // TODO
+
+/*
+** A byte by byte take- / drop- while
+*/
+
+char	*ft_str_take_while(char *source, int (*f)(int));
+char	*ft_str_drop_while(char *source, int (*f)(int));
+int		ft_iswhite(int c);
+
 #endif

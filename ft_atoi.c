@@ -10,8 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int		ft_atoi(const char *str)
 {
-	(void) str;
-	return (0);
+	int result;
+	int mag;
+
+	result = 0;
+	mag = 1;
+	while (ft_iswhite(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	if (*str == '-')
+	{
+		mag = -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (mag * result);
 }
