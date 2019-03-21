@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_toupper.c                                       :+:    :+:            */
+/*   ft_strtoup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 12:20:39 by nmartins      #+#    #+#                 */
+/*   Created: 2019/03/21 18:42:55 by nmartins      #+#    #+#                 */
 /*   Updated: 2019/03/21 19:10:27 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+static void	ft_make_upper(char *c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	*c = ft_toupper(*c);
+}
+
+char		*ft_strtoup(char *str)
+{
+	char *new;
+
+	new = ft_strdup(str);
+	ft_striter(new, ft_make_upper);
+	return (new);
 }

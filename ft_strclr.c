@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_toupper.c                                       :+:    :+:            */
+/*   ft_strclr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 12:20:39 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 19:10:27 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/21 17:24:07 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/21 18:03:59 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void			ft_strclr(char *s)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	ft_bzero(s, ft_strlen(s));
 }
