@@ -42,7 +42,6 @@ int	main(void)
 
 		ft_memset(str, 'a', 0);
 		emi_assert(strcmp(str, "baaaaaaaaaaaaaa") == 0);
-		emi_assert(ft_memset(0, 'a', 10) == NULL);
 	}
 
 	emi_trial("bzero");
@@ -206,7 +205,6 @@ int	main(void)
 			char *s2 = "hella";
 			size_t len = ft_strlen(s1) + 1;
 
-			ft_memcmp(NULL, NULL, 0);
 			emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
 		}
 		{
@@ -245,7 +243,6 @@ int	main(void)
 		emi_assert(ft_strlen("*************************") == strlen("*************************"));
 		emi_assert(ft_strlen("") == strlen(""));
 		emi_assert_i(ft_strlen("") == 0, "empty string");
-		emi_assert_i(ft_strlen(0) == 0, "NULL");
 	}
 
 	emi_trial("strcpy & strncpy");
@@ -260,9 +257,6 @@ int	main(void)
 		ft_bzero(dest2, 40);
 		strcpy(dest2, src);
 		emi_assert_i(memcmp(dest, dest2, 40) == 0, "libc version, sanity check");
-
-		ft_strcpy(0, 0);
-		ft_strcpy(0, src);
 
 		char dest3[40];
 		char dest4[40];
@@ -342,7 +336,6 @@ int	main(void)
 
 		emi_assert(strcmp(ft_strchr(src, 'w'), "world") == 0);
 		emi_assert(ft_strchr(src, 'z') == 0);
-		emi_assert_i(ft_strchr(0, 'z') == 0, "null input");
 		emi_assert_i(strcmp(ft_strchr(src, 'o'), "o, world") == 0, "strchr the beginning");
 		emi_assert_i(strcmp(ft_strrchr(src, 'o'), "orld") == 0, "strrchr the end");
 	}
@@ -484,7 +477,6 @@ int	main(void)
 		char mystr[10] = "hi, world";
 		char *mystr2 = ft_strnew(10); 
 		ft_strclr(mystr);
-		ft_strclr(0);
 		emi_assert(memcmp(mystr, mystr2, 10) == 0);
 	}
 
@@ -620,7 +612,6 @@ int	main(void)
 		char s3[] = "";
 		ft_strrev(s3);
 		emi_assert(strcmp(s3, "") == 0);
-		ft_strrev(0);
 	}
 
 	emi_trial("ft_itoa");
@@ -630,6 +621,9 @@ int	main(void)
 		emi_assert(100 == ft_atoi(ft_itoa(100)));
 		emi_assert(-100 == ft_atoi(ft_itoa(-100)));
 		emi_assert(0 == ft_atoi(ft_itoa(0)));
+		emi_assert(strcmp(ft_itoa(-623), "-623") == 0);
+		emi_assert(strcmp(ft_itoa(0), "0") == 0);
+		emi_assert(strcmp(ft_itoa(156), "156") == 0);
 	}
 
 	emi_debrief();

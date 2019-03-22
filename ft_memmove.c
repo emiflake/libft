@@ -16,25 +16,12 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*tmp;
-	const char	*s;
-	char		*d;
-	size_t		count;
+	void *tmp;
+	void *res;
 
-	s = src;
-	d = dest;
 	tmp = malloc(n);
-	count = 0;
-	while (count < n)
-	{
-		tmp[count] = s[count];
-		count++;
-	}
-	count = 0;
-	while (count < n)
-	{
-		d[count] = tmp[count];
-		count++;
-	}
-	return (dest);
+	ft_memcpy(tmp, src, n);
+	res = ft_memcpy(dest, tmp, n);
+	free(tmp);
+	return (res);
 }

@@ -18,8 +18,6 @@ char			*ft_strtrim(char const *s)
 	size_t	end;
 	char	*out;
 
-	if (!s)
-		return (0);
 	start = 0;
 	end = ft_strlen(s) - 1;
 	while (ft_iswhite(s[start]))
@@ -28,8 +26,10 @@ char			*ft_strtrim(char const *s)
 		end--;
 	end++;
 	if (end < start)
-		return (ft_strnew(1));
-	out = ft_strnew(end - start + 1);
+		return (ft_strnew(0));
+	out = ft_strnew(end - start);
+	if (!out)
+		return (0);
 	ft_memcpy(out, &s[start], end - start);
 	out[end - start] = '\0';
 	return (out);

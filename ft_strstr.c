@@ -19,6 +19,8 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	char *lookback;
 
 	is = (char*)haystack;
+	if (!*is)
+		return (0);
 	while (*is)
 	{
 		lookback = is;

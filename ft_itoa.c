@@ -41,6 +41,8 @@ char		*ft_itoa(int n)
 	int		i;
 
 	long_n = (long)n;
+	if (long_n == 0)
+		return (ft_strdup("0"));
 	size = number_size(long_n);
 	out = (char*)malloc(sizeof(char) * (size + 1));
 	if (!out)
