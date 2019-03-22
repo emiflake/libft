@@ -19,6 +19,8 @@ char			*ft_strmap(char const *s, char (*f)(char))
 
 	i = 0;
 	new = ft_strdup((char*)s);
+	if (!new)
+		return (0);
 	while (new[i])
 	{
 		new[i] = f(new[i]);

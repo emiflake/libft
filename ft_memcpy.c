@@ -17,7 +17,7 @@
 ** We use char* because char is one byte
 */
 
-void	ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t		counter;
 	const char	*s;
@@ -31,4 +31,5 @@ void	ft_memcpy(void *dest, const void *src, size_t n)
 		d[counter] = s[counter];
 		counter++;
 	}
+	return (dest);
 }

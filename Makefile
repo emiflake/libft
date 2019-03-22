@@ -48,6 +48,7 @@ OBJECT_NAMES=ft_memset \
 			 ft_memalloc \
 			 ft_memdel \
 			 ft_strnew \
+			 ft_strdel \
 			 ft_strclr \
 			 ft_striter \
 			 ft_striteri \
@@ -83,6 +84,7 @@ INCLUDES=-I./
 SRC=./
 CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
+SOURCES=$(patsubst %, %.c, $(OBJECT_NAMES))
 OK_COLOR=\x1b[32;01m
 RESET=\x1b[0m
 
@@ -99,12 +101,16 @@ print_header:
 	@echo "o-----------------o"
 	@echo "$(RESET)"
 
-debug: $(OBJECTS)
+debug: 
 	$(CC) -o $(NAME) $^ $(CFLAGS) -g
 
 $(NAME): $(OBJECTS)
 	@ar rcs $@ $^
 	@ranlib $@
+
+so:
+	make CFLAGS=-fPIC
+	$(CC) $(OBJECTS) -shared -o libft.so
 
 %.o: $(SRC)/%.c
 	@echo "Making object \x1b[4m$^$(RESET)"

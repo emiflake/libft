@@ -16,10 +16,8 @@ char	*ft_strchr(const char *haystack, int needle)
 {
 	char *walker;
 
-	if (!haystack)
-		return (0);
 	walker = (char*)haystack;
-	while (*walker)
+	while (*walker || *walker == needle)
 	{
 		if (*walker == needle)
 			return (walker);

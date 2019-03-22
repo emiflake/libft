@@ -56,6 +56,8 @@ char			**ft_strsplit(char const *s, char c)
 
 	word_count = ft_count_sections(s, c);
 	words = (char**)malloc(sizeof(char*) * (word_count + 1));
+	if (!words)
+		return (0);
 	i = 0;
 	words_used = 0;
 	while (words_used <= word_count)

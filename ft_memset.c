@@ -19,8 +19,6 @@ void	*ft_memset(void *source, int constant, size_t size)
 
 	src = source;
 	counter = 0;
-	if (!src)
-		return (NULL);
 	while (counter < size)
 	{
 		src[counter] = constant;
