@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 16:31:46 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/22 16:59:06 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ int	main(void)
 		emi_assert(ft_strlen(str) == strlen(str));
 		char str2[] = "ok but what about these:\0 huh?";
 		emi_assert(ft_strlen(str2) == strlen(str2));
+		emi_assert(ft_strlen("*************************") == strlen("*************************"));
+		emi_assert(ft_strlen("") == strlen(""));
 		emi_assert_i(ft_strlen("") == 0, "empty string");
 		emi_assert_i(ft_strlen(0) == 0, "NULL");
 	}
@@ -200,33 +202,26 @@ int	main(void)
 		{	
 			char str[50] = "Ok, cool! I am big";
 			char str2[50] = "Ok, cool! I am big";
-			printf("in emi_trial: '%s'\n", str2);
 			size_t res = strlcat((char*)str, "Goodbye World!", 10);
 			size_t res2 = ft_strlcat((char*)str2, "Goodbye World!", 10);
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
-			printf("#(%lu) vs #(%lu)\n", res, res2);
-			printf("#(%lu)\n", res2);
 		}
 		{	
 			char str[50] = "Ok, cool!";
 			char str2[50] = "Ok, cool!";
-			printf("in emi_trial: '%s'\n", str2);
 			size_t res = strlcat((char*)str, "Go\0odbye World!", 10);
 			size_t res2 = ft_strlcat((char*)str2, "Go\0odbye World!", 10);
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
-			printf("#(%lu) vs #(%lu)\n", res, res2);
 		}
 		{	
 			char str[50] = "Ok, cool!";
 			char str2[50] = "Ok, cool!";
-			printf("in emi_trial: '%s'\n", str2);
 			size_t res = strlcat((char*)str, "Goodbye World!", 50);
 			size_t res2 = ft_strlcat((char*)str2, "Goodbye World!", 50);
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
-			printf("#(%lu) vs #(%lu)\n", res, res2);
 		}
 #endif
 	}
@@ -246,11 +241,13 @@ int	main(void)
 	{
 		char *src = "hello, world";
 
-		emi_assert(strcmp(ft_strstr(src, "w"), "world") == 0);
-		emi_assert(strcmp(ft_strstr(src, "lo"), "lo, world") == 0);
-		emi_assert(strcmp(ft_strstr(src, ""), src) == 0);
+		emi_assert(strcmp(ft_strstr(src, "w"), strstr(src, "w")) == 0);
+		emi_assert(strcmp(ft_strstr(src, "lo"), strstr(src, "lo")) == 0);
+		emi_assert(strcmp(ft_strstr(src, ""), strstr(src, "")) == 0);
 		emi_assert(ft_strnstr(src, "w", 1) == 0);
+		emi_assert(ft_strnstr(src, "w", 4) == 0);
 		emi_assert(strcmp(ft_strnstr(src, "w", 10), "world") == 0);
+		emi_assert(ft_strnstr(src, "w", 4) == strnstr(src, "w", 4));
 	}
 
 	emi_trial("strcmp & strncmp");
@@ -372,7 +369,7 @@ int	main(void)
 
 	emi_trial("ft_strclr");
 	{
-		char mystr[] = "hi, world";
+		char mystr[10] = "hi, world";
 		char *mystr2 = ft_strnew(10); 
 		ft_strclr(mystr);
 		ft_strclr(0);
@@ -417,8 +414,6 @@ int	main(void)
 		char ft_toupper_c(char);
 		char ft_tolower_c(char);
 		char s1[] = "Hello, World";
-
-		printf("'%s'\n", ft_strmap(s1, ft_toupper_c));
 
 		emi_assert(strcmp(ft_strmap(s1, ft_toupper_c), "HELLO, WORLD") == 0);
 		emi_assert(strcmp(ft_strmap(s1, ft_tolower_c), "hello, world") == 0);
