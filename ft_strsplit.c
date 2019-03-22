@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strsplit.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/03/22 12:26:13 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/22 12:26:28 by nmartins      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 #include <stdlib.h>
@@ -48,14 +60,14 @@ char			**ft_strsplit(char const *s, char c)
 	words_used = 0;
 	while (words_used <= word_count)
 	{
-			while (s[i] == c && s[i])
-				i++;
-			words[words_used] = ft_str_take_while_neq(&s[i], c);
-			words_used++;
-			while (s[i] != c && s[i])
-				i++;
-			while (s[i] == c && s[i])
-				i++;
+		while (s[i] == c && s[i])
+			i++;
+		words[words_used] = ft_str_take_while_neq(&s[i], c);
+		words_used++;
+		while (s[i] != c && s[i])
+			i++;
+		while (s[i] == c && s[i])
+			i++;
 	}
 	words[words_used - 1] = 0;
 	return (words);

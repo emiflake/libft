@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strjoin.c                                       :+:    :+:            */
+/*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 12:25:01 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 12:25:08 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/22 14:40:21 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/22 15:40:51 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	slen1;
-	size_t	slen2;
-	char	*out;
+/*
+** O(n)
+** In-place string reversal, returns str
+*/
 
-	slen1 = ft_strlen(s1);
-	slen2 = ft_strlen(s2);
-	out = (char*)ft_strnew(slen1 + slen2 + 1);
-	ft_memcpy(out, s1, slen1);
-	ft_memcpy(&out[slen1], s2, slen2 + 1);
-	return (out);
+char	*ft_strrev(char *str)
+{
+	int		begin;
+	int		end;
+	char	tmp;
+
+	begin = 0;
+	end = ft_strlen(str) - 1;
+	while (begin < end)
+	{
+		tmp = str[begin];
+		str[begin] = str[end];
+		str[end] = tmp;
+		begin++;
+		end--;
+	}
+	return (str);
 }
