@@ -61,18 +61,18 @@ void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
-char			*ft_strmap(char const *s, char (*f)(char)); // TODO
+char			*ft_strmap(char const *s, char (*f)(char));
 char			*ft_strmapi(
 					char const *s,
-					char (*f)(unsigned int, char)); // TODO
+					char (*f)(unsigned int, char));
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
-char			*ft_strub(
+char			*ft_strsub(
 					char const *s,
-					unsigned int start, size_t len); // TODO
+					unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2); // TODO
-char			*ft_strtrim(char const *s); // TODO
-char			**ft_strsplit(char const *s, char c); // TODO
+char			*ft_strtrim(char const *s);
+char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(int n); // TODO
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
@@ -102,6 +102,19 @@ void			ft_listiter(t_list *lst, void (*f)(t_list *elem)); // TODO
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem)); // TODO
 
 /*
+** Section stack
+*/
+
+typedef struct	s_stack
+{
+	void			*content;
+	struct s_stack	*next;
+}				t_stack;
+
+void			ft_push(t_stack** stack, void const *content); // TODO
+void			*ft_pop(t_stack** stack); // TODO
+
+/*
 ** (Optional) Section hashmaps
 */
 
@@ -121,6 +134,7 @@ int				ft_atoi_base_i(char *str, int base); // TODO
 int				ft_atoi_base_s(char *str, char *base); // TODO
 char			*ft_itoa_base_i(int n, int base); // TODO
 char			*ft_itoa_base_s(int n, char *base); // TODO
+size_t			ft_strchrcount(const char *str, char search);
 
 void			*ft_foldr1(
 					t_list *lst,
