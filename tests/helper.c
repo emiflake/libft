@@ -39,3 +39,11 @@ void ft_sponge(unsigned int i, char *c)
 	else
 		*c = ft_tolower(*c);
 }
+
+char ft_sponge_c(unsigned int i, char c)
+{
+	if (i % 2 == 0)
+		return ft_toupper(c);
+	else
+		return ft_tolower(c);
+}

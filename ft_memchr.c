@@ -20,8 +20,8 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	s = str;
 	count = 0;
 	while (count < n && s[count] != c)
-	{
 		count++;
-	}
+	if (!s[count])
+		return (0);
 	return (void*)(str + count);
 }

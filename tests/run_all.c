@@ -78,41 +78,151 @@ int	main(void)
 
 	emi_trial("memccpy");
 	{
-		char *src = "hello, world";
-		char *dest = malloc(sizeof(char) * 32);
-		ft_bzero(dest, 32);
-		ft_memccpy(dest, src, 'w', 32);
-		
-		emi_assert(strcmp(dest, "hello, ") == 0);
+		{
+			char *src = "hello, world";
+			char *dest = malloc(sizeof(char) * 32);
+			char *dest2 = malloc(sizeof(char) * 32);
+			ft_bzero(dest, 32);
+			void *ret1 = ft_memccpy(dest, src, 'w', ft_strlen(src));
+			ft_bzero(dest2, 32);
+			void *ret2 = memccpy(dest2, src, 'w', ft_strlen(src));
+			
+			emi_assert(strcmp(dest, "hello, w") == 0);
+			emi_assert(memcmp(dest, dest2, 32) == 0);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+		}
+		{
+			char *src = "hello, world";
+			char *dest = malloc(sizeof(char) * 32);
+			char *dest2 = malloc(sizeof(char) * 32);
+			ft_bzero(dest, 32);
+			void *ret1 = ft_memccpy(dest, src, 'z', ft_strlen(src));
+			ft_bzero(dest2, 32);
+			void *ret2 = memccpy(dest2, src, 'z', ft_strlen(src));
+			
+			emi_assert(strcmp(dest, "hello, world") == 0);
+			emi_assert(memcmp(dest, dest2, 32) == 0);
+			emi_assert((unsigned long)ret1 == (unsigned long)ret2);
+		}
+		{
+			char *src = "hello, world";
+			char *dest = malloc(sizeof(char) * 32);
+			char *dest2 = malloc(sizeof(char) * 32);
+			ft_bzero(dest, 32);
+			void *ret1 = ft_memccpy(dest, src, 'd', ft_strlen(src));
+			ft_bzero(dest2, 32);
+			void *ret2 = memccpy(dest2, src, 'd', ft_strlen(src));
+			
+			emi_assert(memcmp(dest, dest2, 32) == 0);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+		}
+		{
+			char *src = "hello, world";
+			char *dest = malloc(sizeof(char) * 32);
+			char *dest2 = malloc(sizeof(char) * 32);
+			ft_bzero(dest, 32);
+			void *ret1 = ft_memccpy(dest, src, 'h', ft_strlen(src));
+			ft_bzero(dest2, 32);
+			void *ret2 = memccpy(dest2, src, 'h', ft_strlen(src));
+			
+			emi_assert(memcmp(dest, dest2, 32) == 0);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+		}
+		{
+			char *src = "hello, world";
+			char *dest = malloc(sizeof(char) * 32);
+			char *dest2 = malloc(sizeof(char) * 32);
+			ft_bzero(dest, 32);
+			void *ret1 = ft_memccpy(dest, src, 'l', 5);
+			ft_bzero(dest2, 32);
+			void *ret2 = memccpy(dest2, src, 'l', 5);
+			
+			emi_assert(memcmp(dest, dest2, 32) == 0);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+		}
 	}
 
 	emi_trial("memmove");
 	{
-		char *src = "hiya, how are you 'dave'?";
-		size_t len = ft_strlen(src);
-		char *dest = malloc(sizeof(char) * len);
-		ft_memcpy(dest, src, len);
-		ft_memmove(dest + 19, dest, 4);
-		emi_assert(strcmp("hiya, how are you 'hiya'?", dest) == 0);
+		{
+			char *src = "hiya, how are you 'dave'?";
+			size_t len = ft_strlen(src);
+			char *dest = malloc(sizeof(char) * len);
+			char *dest2 = malloc(sizeof(char) * len);
+			ft_memcpy(dest, src, len);
+			memcpy(dest2, src, len);
+			ft_memmove(dest + 19, dest, 4);
+			memmove(dest2 + 19, dest2, 4);
+			emi_assert(strcmp("hiya, how are you 'hiya'?", dest) == 0);
+			emi_assert(strcmp("hiya, how are you 'hiya'?", dest2) == 0);
+			emi_assert(memcmp(dest, dest2, len + 1) == 0);
+		}
+		{
+			char *src = "hiya, how are you 'dave'?";
+			size_t len = ft_strlen(src);
+			char *dest = malloc(sizeof(char) * len);
+			char *dest2 = malloc(sizeof(char) * len);
+			ft_memcpy(dest, src, len);
+			memcpy(dest2, src, len);
+			ft_memmove(dest + 30, dest, 4);
+			memmove(dest2 + 30, dest2, 4);
+			emi_assert(memcmp(dest, dest2, len + 1) == 0);
+		}
+		{
+			char *src = "hiya, how are you 'dave'?";
+			size_t len = ft_strlen(src);
+			char *dest = malloc(sizeof(char) * len);
+			char *dest2 = malloc(sizeof(char) * len);
+			ft_memcpy(dest, src, len);
+			memcpy(dest2, src, len);
+			ft_memmove(dest + 19, dest, 9);
+			memmove(dest2 + 19, dest2, 9);
+			emi_assert(memcmp(dest, dest2, len + 1) == 0);
+		}
 	}
 
 	emi_trial("memchr");
 	{
-		char *str = "hello, world";
-		char *dest = ft_memchr(str, 'w', ft_strlen(str));
+		{
+			char *str = "hello, world";
+			char *dest = ft_memchr(str, 'w', ft_strlen(str));
+			char *dest2 = memchr(str, 'w', ft_strlen(str));
 
-		emi_assert(strcmp(dest, "world") == 0);
+			emi_assert(strcmp(dest, "world") == strcmp(dest2, "world"));
+		}
+		{
+			char *str = "hello";
+			char *dest = ft_memchr(str, 'w', ft_strlen(str));
+			char *dest2 = memchr(str, 'w', ft_strlen(str));
+
+			emi_assert(dest == dest2);
+		}
 	}
 
 	emi_trial("memcmp");
 	{
-		char *s1 = "hello";
-		char *s2 = "hella";
-		size_t len = ft_strlen(s1);
+		{
+			char *s1 = "hello";
+			char *s2 = "hella";
+			size_t len = ft_strlen(s1) + 1;
 
-		ft_memcmp(NULL, NULL, 0);
-		
-		emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
+			ft_memcmp(NULL, NULL, 0);
+			emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
+		}
+		{
+			char *s1 = "";
+			char *s2 = "";
+			size_t len = ft_strlen(s1) + 1;
+
+			emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
+		}
+		{
+			char *s1 = "*****";
+			char *s2 = "*****";
+			size_t len = ft_strlen(s1) + 1;
+
+			emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
+		}
 	}
 	
 	emi_trial("strdup");
@@ -247,7 +357,9 @@ int	main(void)
 		emi_assert(ft_strnstr(src, "w", 1) == 0);
 		emi_assert(ft_strnstr(src, "w", 4) == 0);
 		emi_assert(strcmp(ft_strnstr(src, "w", 10), "world") == 0);
+#ifdef __APPLE__
 		emi_assert(ft_strnstr(src, "w", 4) == strnstr(src, "w", 4));
+#endif
 	}
 
 	emi_trial("strcmp & strncmp");
@@ -353,7 +465,7 @@ int	main(void)
 		emi_assert_i(ns != 0, "test base");
 		ft_memdel((void**)&ns);
 		emi_assert(ns == NULL);
-		ns = ft_memalloc(sizeof(int) * 10000000000000000);
+		ns = ft_memalloc(sizeof(int) * 1000000000000000000);
 		emi_assert_i(ns == 0, "too much mem");
 
 		ft_memdel((void**)&ns);
@@ -411,12 +523,14 @@ int	main(void)
 	
 	emi_trial("ft_strmap & ft_strmapi");
 	{
+		char ft_sponge_c(unsigned int i, char c);
 		char ft_toupper_c(char);
 		char ft_tolower_c(char);
 		char s1[] = "Hello, World";
 
 		emi_assert(strcmp(ft_strmap(s1, ft_toupper_c), "HELLO, WORLD") == 0);
 		emi_assert(strcmp(ft_strmap(s1, ft_tolower_c), "hello, world") == 0);
+		emi_assert(strcmp(ft_strmapi(s1, ft_sponge_c), "HeLlO, wOrLd") == 0);
 	}
 
 	emi_trial("ft_strtrim");
@@ -478,16 +592,19 @@ int	main(void)
 		emi_assert(memcmp(ft_strsub(str, 5, 2), "is", 3) == 0);
 		emi_assert(memcmp(ft_strsub(str, 0, 4), "baba", 5) == 0);
 		emi_assert(memcmp(ft_strsub(str, 8, 3), "you", 4) == 0);
-		emi_assert(ft_strsub(str, 0, 3) != str);
+		emi_assert_i(ft_strsub(str, 0, 3) != str, "is fresh");
 	}
 
 	emi_trial("ft_strjoin");
 	{
-		char s1[] = "hello, ";
-		char s2[] = "world!";
-		char *joined = ft_strjoin(s1, s2);
-		emi_assert(strcmp(joined, "hello, world!") == 0);
-		emi_assert(joined != s1);
+		emi_assert(strcmp(ft_strjoin("hello, ", "world!"), 
+								"hello, world!") == 0);
+		emi_assert(strcmp(ft_strjoin("", "world!"), 
+								"world!") == 0);
+		emi_assert(strcmp(ft_strjoin("hello!", ""), 
+								"hello!") == 0);
+		emi_assert(strcmp(ft_strjoin("", ""), 
+								"") == 0);
 	}
 
 	emi_trial("ft_strrev");
