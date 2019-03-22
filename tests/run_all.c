@@ -130,6 +130,8 @@ int	main(void)
 
 		emi_assert(ft_strlen(str) == 12);
 		emi_assert(ft_strlen(str) == strlen(str));
+		char str2[] = "ok but what about these:\0 huh?";
+		emi_assert(ft_strlen(str2) == strlen(str2));
 		emi_assert_i(ft_strlen("") == 0, "empty string");
 		emi_assert_i(ft_strlen(0) == 0, "NULL");
 	}
@@ -177,6 +179,7 @@ int	main(void)
 
 	emi_trial("strncat");
 	{
+#ifdef __APPLE__
 		char str[50] = "Hello ";
 		char str2[50] = "Hello ";
 		strncat(str2, "Goodbye World!", 4);
@@ -188,10 +191,12 @@ int	main(void)
 		char bye[10] = "bye ";
 		ft_strncat(bye, bye, 3);
 		emi_assert(strcmp(bye, "bye bye") == 0);
+#endif
 	}
 
 	emi_trial("strlcat");
 	{
+#ifdef __APPLE__
 		{	
 			char str[50] = "Ok, cool! I am big";
 			char str2[50] = "Ok, cool! I am big";
@@ -201,6 +206,7 @@ int	main(void)
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
 			printf("#(%lu) vs #(%lu)\n", res, res2);
+			printf("#(%lu)\n", res2);
 		}
 		{	
 			char str[50] = "Ok, cool!";
@@ -222,6 +228,7 @@ int	main(void)
 			emi_assert(res == res2);
 			printf("#(%lu) vs #(%lu)\n", res, res2);
 		}
+#endif
 	}
 
 	emi_trial("strchr & strrchr");
@@ -276,7 +283,6 @@ int	main(void)
 		emi_assert(ft_isprint('@'));
 		emi_assert(ft_iswhite(' '));
 		emi_assert(ft_iswhite('\t'));
-		emi_assert(ft_iswhite('\r'));
 		emi_assert(ft_iswhite('\n'));
 		emi_assert(!ft_iswhite('@'));
 	}
@@ -387,7 +393,7 @@ int	main(void)
 		emi_assert(strcmp(str, "HeLlO, wOrLd") == 0);
 	}
 
-	emi_trial("Ft_strtoup & ft_strtolo");
+	emi_trial("ft_strtoup & ft_strtolo");
 	{
 		char str[] = "mixed Case is Me";
 
@@ -416,7 +422,77 @@ int	main(void)
 
 		emi_assert(strcmp(ft_strmap(s1, ft_toupper_c), "HELLO, WORLD") == 0);
 		emi_assert(strcmp(ft_strmap(s1, ft_tolower_c), "hello, world") == 0);
-		emi_assert(2 == 3);
+	}
+
+	emi_trial("ft_strtrim");
+	{
+		char s1[] = "    hello far world     ";
+		char s2[] = "hello far world     ";
+		char s3[] = "   \t\nhello far world";
+		char s4[] = "";
+		char s5[] = "       ";
+		char s6[] = "   am i even valid\0 at all?";
+
+		emi_assert(strcmp(ft_strtrim(s1), "hello far world") == 0);
+		emi_assert(strcmp(ft_strtrim(s2), "hello far world") == 0);
+		emi_assert(strcmp(ft_strtrim(s3), "hello far world") == 0);
+		emi_assert(strcmp(ft_strtrim(s4), "") == 0);
+		emi_assert(strcmp(ft_strtrim(s5), "") == 0);
+		emi_assert(strcmp(ft_strtrim(s6), "am i even valid") == 0);
+	}
+
+	emi_trial("ft_strchrcount");
+	{
+		char s1[] = "mississippi";
+		emi_assert(ft_strchrcount(s1, 's') == 4);
+		emi_assert(ft_strchrcount(s1, 'i') == 4);
+		emi_assert(ft_strchrcount(s1, 'p') == 2);
+		emi_assert(ft_strchrcount(s1, 'a') == 0);
+	}
+
+	emi_trial("ft_strsplit");
+	{
+		{
+			char str[] = "hello, world, hi";
+
+			char **words = ft_strsplit(str, ' ');
+			char *exp_words[] = { "hello,", "world,", "hi" };
+			for (size_t i = 0; i <3; i++)
+				emi_assert(strcmp(words[i], exp_words[i]) == 0);
+		}
+		{
+			char str[] = "hello*fellow***students";
+
+			char **words = ft_strsplit(str, '*');
+			char *exp_words[] = { "hello", "fellow", "students", 0};
+			for (size_t i = 0; words[i]; i++)
+				emi_assert(strcmp(words[i], exp_words[i]) == 0);
+		}
+		{
+			char str[] = "AAAAAA";
+
+			char **words = ft_strsplit(str, 'A');
+			emi_assert(words[0] == 0);
+		}
+	}
+
+	emi_trial("ft_strsub");
+	{
+		char str[] = "baba is you";
+		
+		emi_assert(memcmp(ft_strsub(str, 5, 2), "is", 3) == 0);
+		emi_assert(memcmp(ft_strsub(str, 0, 4), "baba", 5) == 0);
+		emi_assert(memcmp(ft_strsub(str, 8, 3), "you", 4) == 0);
+		emi_assert(ft_strsub(str, 0, 3) != str);
+	}
+
+	emi_trial("ft_strjoin");
+	{
+		char s1[] = "hello, ";
+		char s2[] = "world!";
+		char *joined = ft_strjoin(s1, s2);
+		emi_assert(strcmp(joined, "hello, world!") == 0);
+		emi_assert(joined != s1);
 	}
 
 	emi_debrief();

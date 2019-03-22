@@ -55,6 +55,10 @@ OBJECT_NAMES=ft_memset \
 			 ft_strmapi \
 			 ft_strequ \
 			 ft_strnequ \
+			 ft_strsub \
+			 ft_strjoin \
+			 ft_strtrim \
+			 ft_strsplit \
 			 ft_putchar \
 			 ft_putstr \
 			 ft_putendl \
@@ -67,7 +71,8 @@ OBJECT_NAMES=ft_memset \
 			 ft_str_take_while \
 			 ft_iswhite \
 			 ft_strtolo \
-			 ft_strtoup
+			 ft_strtoup \
+			 ft_strchrcount
 			 
 
 # do not configure
