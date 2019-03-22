@@ -21,8 +21,8 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	new = ft_strdup((char*)s);
 	while (new[i])
 	{
-		i++;
 		new[i] = f(i, new[i]);
+		i++;
 	}
 	return (new);
 }
