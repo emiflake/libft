@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/21 20:44:18 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/22 15:37:12 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ OBJECT_NAMES=ft_memset \
 			 ft_strjoin \
 			 ft_strtrim \
 			 ft_strsplit \
+			 ft_itoa \
 			 ft_putchar \
 			 ft_putstr \
 			 ft_putendl \
@@ -72,7 +73,8 @@ OBJECT_NAMES=ft_memset \
 			 ft_iswhite \
 			 ft_strtolo \
 			 ft_strtoup \
-			 ft_strchrcount
+			 ft_strchrcount \
+			 ft_strrev
 			 
 
 # do not configure
@@ -87,6 +89,7 @@ RESET=\x1b[0m
 #########
 # rules #
 #########
+
 all: print_header $(NAME)
 
 print_header:

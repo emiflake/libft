@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 21:01:42 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/22 16:31:46 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,7 +464,7 @@ int	main(void)
 			char str[] = "hello*fellow***students";
 
 			char **words = ft_strsplit(str, '*');
-			char *exp_words[] = { "hello", "fellow", "students", 0};
+			char *exp_words[] = { "hello", "fellow", "students", 0 };
 			for (size_t i = 0; words[i]; i++)
 				emi_assert(strcmp(words[i], exp_words[i]) == 0);
 		}
@@ -493,6 +493,31 @@ int	main(void)
 		char *joined = ft_strjoin(s1, s2);
 		emi_assert(strcmp(joined, "hello, world!") == 0);
 		emi_assert(joined != s1);
+	}
+
+	emi_trial("ft_strrev");
+	{
+		char s1[] = "hello, world";
+		char *s2 = ft_strdup(s1);
+		ft_strrev(s2);
+
+		emi_assert(strcmp(s2, "dlrow ,olleh") == 0);
+		ft_strrev(s2);
+		emi_assert(strcmp(s2, s1) == 0);
+
+		char s3[] = "";
+		ft_strrev(s3);
+		emi_assert(strcmp(s3, "") == 0);
+		ft_strrev(0);
+	}
+
+	emi_trial("ft_itoa");
+	{
+		emi_assert(INT_MIN == ft_atoi(ft_itoa(INT_MIN)));
+		emi_assert(INT_MAX == ft_atoi(ft_itoa(INT_MAX)));
+		emi_assert(100 == ft_atoi(ft_itoa(100)));
+		emi_assert(-100 == ft_atoi(ft_itoa(-100)));
+		emi_assert(0 == ft_atoi(ft_itoa(0)));
 	}
 
 	emi_debrief();

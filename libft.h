@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 20:42:27 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/22 16:17:21 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char			*ft_strsub(
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
-char			*ft_itoa(int n); // TODO
+char			*ft_itoa(int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -111,8 +111,8 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-void			ft_push(t_stack** stack, void const *content); // TODO
-void			*ft_pop(t_stack** stack); // TODO
+void			ft_push(t_stack **stack, void const *content); // TODO
+void			*ft_pop(t_stack **stack); // TODO
 
 /*
 ** (Optional) Section hashmaps
@@ -135,9 +135,10 @@ int				ft_atoi_base_s(char *str, char *base); // TODO
 char			*ft_itoa_base_i(int n, int base); // TODO
 char			*ft_itoa_base_s(int n, char *base); // TODO
 size_t			ft_strchrcount(const char *str, char search);
+char			*ft_strrev(char *str);
+
 
 void			*ft_foldr1(
 					t_list *lst,
 					void *(*reductor(void *, size_t, void*))); // TODO
-
 #endif
