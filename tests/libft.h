@@ -136,6 +136,10 @@ char			*ft_itoa_base_i(int n, int base); // TODO
 char			*ft_itoa_base_s(int n, char *base); // TODO
 size_t			ft_strchrcount(const char *str, char search);
 char			*ft_strrev(char *str);
+void			*ft_realloc(
+					void *mem,
+					size_t s_len,
+					size_t n_len);
 
 
 void			*ft_foldr1(
