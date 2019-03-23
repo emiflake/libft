@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/19 18:16:07 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 19:34:35 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	a = s1;
 	b = s2;
-	while (i < n && a[i] == b[i])
+	while (i < n - 1 && a[i] == b[i])
 		i++;
 	return (a[i] - b[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 18:40:00 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 16:59:08 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 19:43:39 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 	char	*js;
 	char	*lookback;
 	size_t	i;
+	size_t	n_len;
 
+	n_len = ft_strlen(needle);
 	is = (char*)haystack;
 	i = 0;
-	while (*is && i <= n)
+	while (*is && i + n_len <= n)
 	{
 		lookback = is;
 		js = (char*)needle;

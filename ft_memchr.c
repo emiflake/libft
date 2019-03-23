@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/02/26 17:43:11 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 19:59:34 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_memchr(const void *str, int c, size_t n)
 
 	s = str;
 	count = 0;
-	while (count < n && s[count] != c)
+	while (count < n - 1 && s[count] != c)
 		count++;
-	if (!s[count])
+	if (s[count] != c)
 		return (0);
-	return (void*)(str + count);
+	return (void*)(&str[count]);
 }
