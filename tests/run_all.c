@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 16:59:06 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 15:52:35 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -566,6 +566,15 @@ int	main(void)
 
 			char **words = ft_strsplit(str, '*');
 			char *exp_words[] = { "hello", "fellow", "students", 0 };
+			for (size_t i = 0; words[i]; i++)
+				emi_assert(strcmp(words[i], exp_words[i]) == 0);
+		}
+		{
+			size_t ft_count_sections(char const *s, char c);
+			char str[] = "	split         this for   me  !     ";
+
+			char **words = ft_strsplit(str, ' ');
+			char *exp_words[] = { "split", "this", "for", "me", "!", 0 };
 			for (size_t i = 0; words[i]; i++)
 				emi_assert(strcmp(words[i], exp_words[i]) == 0);
 		}

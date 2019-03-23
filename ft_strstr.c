@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 18:08:03 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 16:43:35 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 15:35:41 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*ft_strstr(const char *haystack, const char *needle)
 
 	is = (char*)haystack;
 	if (!*is)
-		return (0);
+		return (is);
+	if (!*needle)
+		return (is);
 	while (*is)
 	{
 		lookback = is;
