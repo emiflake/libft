@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/19 18:15:18 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 19:34:39 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	unsigned char		*d;
 
 	if (n == 0)
-		return (dest);
+		return (NULL);
 	s = src;
 	d = dest;
 	counter = 0;

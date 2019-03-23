@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/21 13:28:47 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 17:26:46 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 20:06:43 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char	*ft_strcat(char *s1, const char *s2)
 		s1[i + j] = s2[j];
 		j++;
 	}
+	s1[i + j] = 0;
 	return (s1);
 }

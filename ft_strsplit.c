@@ -6,14 +6,13 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:26:13 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 16:01:52 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 19:45:22 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include <stdlib.h>
-# include <stdio.h>
 
 static char		*ft_str_take_while_neq(const char *source, char c)
 {
@@ -29,7 +28,7 @@ static char		*ft_str_take_while_neq(const char *source, char c)
 	return (out);
 }
 
-size_t	ft_count_sections(char const *s, char c)
+size_t			ft_count_sections(char const *s, char c)
 {
 	size_t count;
 	size_t i;
