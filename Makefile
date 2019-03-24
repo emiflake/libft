@@ -75,8 +75,9 @@ OBJECT_NAMES=ft_memset \
 			 ft_strtolo \
 			 ft_strtoup \
 			 ft_strchrcount \
-			 ft_strrev
-			 
+			 ft_strrev \
+			 ft_print_memory
+
 
 # do not configure
 CC=gcc
@@ -101,7 +102,7 @@ print_header:
 	@echo "o-----------------o"
 	@echo "$(RESET)"
 
-debug: 
+debug:
 	$(CC) -o $(NAME) $^ $(CFLAGS) -g
 
 $(NAME): $(OBJECTS)
