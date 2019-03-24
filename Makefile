@@ -69,6 +69,12 @@ OBJECT_NAMES=ft_memset \
 			 ft_putstr_fd \
 			 ft_putendl_fd \
 			 ft_putnbr_fd \
+			 ft_lstnew \
+			 ft_lstdelone \
+			 ft_lstdel \
+			 ft_lstadd \
+			 ft_lstiter \
+			 ft_lstmap \
 			 ft_str_drop_while \
 			 ft_str_take_while \
 			 ft_iswhite \
