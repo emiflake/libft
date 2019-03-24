@@ -20,6 +20,8 @@
 #include "libft.h"
 #include "emitest.h"
 
+// run extra tests specific to my library
+#define EXTRA
 
 int	main(void)
 {
@@ -391,12 +393,15 @@ int	main(void)
 		emi_assert(!ft_isprint('\t'));
 		emi_assert(ft_isprint(' '));
 		emi_assert(ft_isprint('@'));
+#ifdef EXTRA
 		emi_assert(ft_iswhite(' '));
 		emi_assert(ft_iswhite('\t'));
 		emi_assert(ft_iswhite('\n'));
 		emi_assert(!ft_iswhite('@'));
+#endif
 	}
 
+#ifdef EXTRA
 	emi_trial("drop & take while");
 	{
 		char *original = "hello, world";
@@ -410,6 +415,7 @@ int	main(void)
 		emi_assert(strcmp(w2, "hello") == 0);
 		emi_assert_i(w2 != original, "actually makes a copy");
 	}
+#endif
 
 	emi_trial("atoi");
 	{
@@ -511,6 +517,7 @@ int	main(void)
 		emi_assert(strcmp(str, "HeLlO, wOrLd") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strtoup & ft_strtolo");
 	{
 		char str[] = "mixed Case is Me";
@@ -518,6 +525,7 @@ int	main(void)
 		emi_assert(strcmp(ft_strtolo(str), "mixed case is me") == 0);
 		emi_assert(strcmp(ft_strtoup(str), "MIXED CASE IS ME") == 0);
 	}
+#endif
 
 	emi_trial("ft_strequ & ft_strnequ");
 	{
@@ -559,6 +567,7 @@ int	main(void)
 		emi_assert(strcmp(ft_strtrim(s6), "am i even valid") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strchrcount");
 	{
 		char s1[] = "mississippi";
@@ -567,6 +576,7 @@ int	main(void)
 		emi_assert(ft_strchrcount(s1, 'p') == 2);
 		emi_assert(ft_strchrcount(s1, 'a') == 0);
 	}
+#endif
 
 	emi_trial("ft_strsplit");
 	{
@@ -616,6 +626,7 @@ int	main(void)
 								"") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strrev");
 	{
 		char s1[] = "hello, world";
@@ -648,7 +659,11 @@ int	main(void)
 		char str[] = "hello, world, how are you doing today? hello my name is jeff uh yeah";
 		ft_print_memory(str, sizeof(str));
 	}
+	emi_trial("ft_lstlen");
+	{
 
+	}
+#endif
 	emi_debrief();
 	return (0);
 }

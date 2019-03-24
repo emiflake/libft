@@ -94,12 +94,12 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-t_list			*ft_lstnew(void const *content, size_t content_size); // TODO
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t)); // TODO
+t_list			*ft_lstnew(void const *content, size_t content_size);
+void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t)); // TODO
-void			ft_lstadd(t_list **alst, t_list *new); // TODO
-void			ft_listiter(t_list *lst, void (*f)(t_list *elem)); // TODO
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem)); // TODO
+void			ft_lstadd(t_list **alst, t_list *next);
+void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
 ** Section stack
@@ -129,20 +129,11 @@ char			*ft_strtolo(char *str);
 char			*ft_str_take_while(const char *source, int (*f)(int));
 char			*ft_str_drop_while(const char *source, int (*f)(int));
 int				ft_iswhite(int c);
-void			ft_print_memory(void *addr, size_t size); // TODO
-int				ft_atoi_base_i(char *str, int base); // TODO
-int				ft_atoi_base_s(char *str, char *base); // TODO
-char			*ft_itoa_base_i(int n, int base); // TODO
-char			*ft_itoa_base_s(int n, char *base); // TODO
+void			ft_print_memory(void *addr, size_t size);
 size_t			ft_strchrcount(const char *str, char search);
 char			*ft_strrev(char *str);
 void			*ft_realloc(
 					void *mem,
 					size_t s_len,
 					size_t n_len);
-
-
-void			*ft_foldr1(
-					t_list *lst,
-					void *(*reductor(void *, size_t, void*))); // TODO
 #endif
