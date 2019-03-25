@@ -20,6 +20,8 @@
 #include "libft.h"
 #include "emitest.h"
 
+// run extra tests specific to my library
+#define EXTRA
 
 int	main(void)
 {
@@ -48,8 +50,8 @@ int	main(void)
 	{
 		char *str;
 		str = malloc(sizeof(char) * 16);
-		/* useless overhead, 
-		 * but for testing sake, 
+		/* useless overhead,
+		 * but for testing sake,
 		 * it's good */
 		ft_bzero(str, 16);
 		ft_memset(str, 'a', 15);
@@ -68,7 +70,7 @@ int	main(void)
 		ft_memcpy(dest, src, 12);
 		ft_memcpy(dest + 12, src, 12);
 		ft_memcpy(NULL, NULL, 0);
-		
+
 		emi_assert(strcmp(dest, "hello, worldhello, world") == 0);
 
 		ft_memcpy(dest, dest + 5, ft_strlen(dest));
@@ -85,10 +87,11 @@ int	main(void)
 			void *ret1 = ft_memccpy(dest, src, 'w', ft_strlen(src));
 			ft_bzero(dest2, 32);
 			void *ret2 = memccpy(dest2, src, 'w', ft_strlen(src));
-			
+
 			emi_assert(strcmp(dest, "hello, w") == 0);
 			emi_assert(memcmp(dest, dest2, 32) == 0);
-			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest ==
+					(unsigned long)ret2 - (unsigned long)dest2);
 		}
 		{
 			char *src = "hello, world";
@@ -98,7 +101,7 @@ int	main(void)
 			void *ret1 = ft_memccpy(dest, src, 'z', ft_strlen(src));
 			ft_bzero(dest2, 32);
 			void *ret2 = memccpy(dest2, src, 'z', ft_strlen(src));
-			
+
 			emi_assert(strcmp(dest, "hello, world") == 0);
 			emi_assert(memcmp(dest, dest2, 32) == 0);
 			emi_assert((unsigned long)ret1 == (unsigned long)ret2);
@@ -111,9 +114,10 @@ int	main(void)
 			void *ret1 = ft_memccpy(dest, src, 'd', ft_strlen(src));
 			ft_bzero(dest2, 32);
 			void *ret2 = memccpy(dest2, src, 'd', ft_strlen(src));
-			
+
 			emi_assert(memcmp(dest, dest2, 32) == 0);
-			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest ==
+					(unsigned long)ret2 - (unsigned long)dest2);
 		}
 		{
 			char *src = "hello, world";
@@ -123,9 +127,10 @@ int	main(void)
 			void *ret1 = ft_memccpy(dest, src, 'h', ft_strlen(src));
 			ft_bzero(dest2, 32);
 			void *ret2 = memccpy(dest2, src, 'h', ft_strlen(src));
-			
+
 			emi_assert(memcmp(dest, dest2, 32) == 0);
-			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest ==
+					(unsigned long)ret2 - (unsigned long)dest2);
 		}
 		{
 			char *src = "hello, world";
@@ -135,9 +140,10 @@ int	main(void)
 			void *ret1 = ft_memccpy(dest, src, 'l', 5);
 			ft_bzero(dest2, 32);
 			void *ret2 = memccpy(dest2, src, 'l', 5);
-			
+
 			emi_assert(memcmp(dest, dest2, 32) == 0);
-			emi_assert((unsigned long)ret1 - (unsigned long)dest == (unsigned long)ret2 - (unsigned long)dest2);
+			emi_assert((unsigned long)ret1 - (unsigned long)dest ==
+					(unsigned long)ret2 - (unsigned long)dest2);
 		}
 	}
 
@@ -222,7 +228,7 @@ int	main(void)
 			emi_assert(ft_memcmp(s1, s2, len) == memcmp(s1, s2, len));
 		}
 	}
-	
+
 	emi_trial("strdup");
 	{
 		char *str = "hello";
@@ -240,7 +246,8 @@ int	main(void)
 		emi_assert(ft_strlen(str) == strlen(str));
 		char str2[] = "ok but what about these:\0 huh?";
 		emi_assert(ft_strlen(str2) == strlen(str2));
-		emi_assert(ft_strlen("*************************") == strlen("*************************"));
+		emi_assert(ft_strlen("*************************") ==
+				strlen("*************************"));
 		emi_assert(ft_strlen("") == strlen(""));
 		emi_assert_i(ft_strlen("") == 0, "empty string");
 	}
@@ -256,7 +263,8 @@ int	main(void)
 		emi_assert(strcmp(dest, "hallo") == 0);
 		ft_bzero(dest2, 40);
 		strcpy(dest2, src);
-		emi_assert_i(memcmp(dest, dest2, 40) == 0, "libc version, sanity check");
+		emi_assert_i(memcmp(dest, dest2, 40) == 0,
+				"libc version, sanity check");
 
 		char dest3[40];
 		char dest4[40];
@@ -266,7 +274,7 @@ int	main(void)
 		strncpy(dest4, src, 4);
 		emi_assert_i(memcmp(dest3, dest4, 40) == 0, "libc version for strncpy");
 	}
-	
+
 	emi_trial("strcat");
 	{
 		char str[50] = "Hello ";
@@ -303,7 +311,7 @@ int	main(void)
 	emi_trial("strlcat");
 	{
 #ifdef __APPLE__
-		{	
+		{
 			char str[50] = "Ok, cool! I am big";
 			char str2[50] = "Ok, cool! I am big";
 			size_t res = strlcat((char*)str, "Goodbye World!", 10);
@@ -311,7 +319,7 @@ int	main(void)
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
 		}
-		{	
+		{
 			char str[50] = "Ok, cool!";
 			char str2[50] = "Ok, cool!";
 			size_t res = strlcat((char*)str, "Go\0odbye World!", 10);
@@ -319,7 +327,7 @@ int	main(void)
 			emi_assert(memcmp(str, str2, 50) == 0);
 			emi_assert(res == res2);
 		}
-		{	
+		{
 			char str[50] = "Ok, cool!";
 			char str2[50] = "Ok, cool!";
 			size_t res = strlcat((char*)str, "Goodbye World!", 50);
@@ -336,8 +344,10 @@ int	main(void)
 
 		emi_assert(strcmp(ft_strchr(src, 'w'), "world") == 0);
 		emi_assert(ft_strchr(src, 'z') == 0);
-		emi_assert_i(strcmp(ft_strchr(src, 'o'), "o, world") == 0, "strchr the beginning");
-		emi_assert_i(strcmp(ft_strrchr(src, 'o'), "orld") == 0, "strrchr the end");
+		emi_assert_i(strcmp(ft_strchr(src, 'o'), "o, world") == 0,
+				"strchr the beginning");
+		emi_assert_i(strcmp(ft_strrchr(src, 'o'), "orld") == 0,
+				"strrchr the end");
 	}
 
 	emi_trial("strstr & strnstr");
@@ -383,12 +393,15 @@ int	main(void)
 		emi_assert(!ft_isprint('\t'));
 		emi_assert(ft_isprint(' '));
 		emi_assert(ft_isprint('@'));
+#ifdef EXTRA
 		emi_assert(ft_iswhite(' '));
 		emi_assert(ft_iswhite('\t'));
 		emi_assert(ft_iswhite('\n'));
 		emi_assert(!ft_iswhite('@'));
+#endif
 	}
 
+#ifdef EXTRA
 	emi_trial("drop & take while");
 	{
 		char *original = "hello, world";
@@ -402,6 +415,7 @@ int	main(void)
 		emi_assert(strcmp(w2, "hello") == 0);
 		emi_assert_i(w2 != original, "actually makes a copy");
 	}
+#endif
 
 	emi_trial("atoi");
 	{
@@ -413,15 +427,22 @@ int	main(void)
 		emi_assert_i(ft_atoi("\n\n1\t2") == 1, "weird whitespace around 1");
 		emi_assert_i(ft_atoi("+2147483647") == 2147483647, "int_max");
 		emi_assert_i(ft_atoi("-2147483648") == -2147483648, "int_min");
-		emi_assert_i(ft_atoi("-2147483648") == atoi("-2147483648"), "comparison to atoi with edge cases");
-		emi_assert_i(ft_atoi("+2147483647") == atoi("+2147483647"), "comparison to atoi with edge cases");
-		emi_assert_i(ft_atoi("-21474836481") == atoi("-21474836481"), "comparison to atoi with edge cases");
-		emi_assert_i(ft_atoi("               \t+69") == atoi("               \t+69"), "comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("-2147483648") == atoi("-2147483648"),
+				"comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("+2147483647") == atoi("+2147483647"),
+				"comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("-21474836481") == atoi("-21474836481"),
+				"comparison to atoi with edge cases");
+		emi_assert_i(ft_atoi("               \t+69") ==
+				atoi("               \t+69"),
+				"comparison to atoi with edge cases");
 	}
 
 	emi_trial("manual tests");
 	{
-		printf(" ==> the following are manual tests, please ensure they are checked correctly before handing it in\n");
+		printf(" ==> the following are manual tests, ");
+		printf("please ensure they are checked correctly ");
+		printf("before handing it in\n");
 		printf("---- START ----\n");
 
 		ft_putstr("test the world\n");
@@ -439,15 +460,17 @@ int	main(void)
 		ft_putnbr(0);
 		ft_putchar('\n');
 
-		int fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+		int fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC,
+			S_IRUSR | S_IWUSR);
 		printf("debug fd: <%d>\n", fd);
 		ft_putstr_fd("test the world\n", fd);
 		ft_putchar_fd('x', fd);
 		ft_putchar_fd('\n', fd);
 		ft_putendl_fd("we are alive", fd);
-		
+
 		printf("---- END  ----\n");
-		printf(" ==> also ensure that the files have been modified: 'test.txt'\n");
+		printf(" ==> also ensure that the files have been modified:");
+		printf("'test.txt'\n");
 		printf(" ==> contents should match the printed text above");
 	}
 
@@ -475,7 +498,7 @@ int	main(void)
 	emi_trial("ft_strclr");
 	{
 		char mystr[10] = "hi, world";
-		char *mystr2 = ft_strnew(10); 
+		char *mystr2 = ft_strnew(10);
 		ft_strclr(mystr);
 		emi_assert(memcmp(mystr, mystr2, 10) == 0);
 	}
@@ -484,7 +507,7 @@ int	main(void)
 	{
 		void ft_make_upper(char *c);
 		void ft_sponge(unsigned int i, char *c);
-	
+
 		char str[] = "hello, world";
 
 		ft_striter(str, ft_make_upper);
@@ -494,6 +517,7 @@ int	main(void)
 		emi_assert(strcmp(str, "HeLlO, wOrLd") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strtoup & ft_strtolo");
 	{
 		char str[] = "mixed Case is Me";
@@ -501,6 +525,7 @@ int	main(void)
 		emi_assert(strcmp(ft_strtolo(str), "mixed case is me") == 0);
 		emi_assert(strcmp(ft_strtoup(str), "MIXED CASE IS ME") == 0);
 	}
+#endif
 
 	emi_trial("ft_strequ & ft_strnequ");
 	{
@@ -512,7 +537,7 @@ int	main(void)
 		emi_assert(ft_strnequ(s1, s2, 6));
 		emi_assert(!ft_strnequ(s1, s2, 8));
 	}
-	
+
 	emi_trial("ft_strmap & ft_strmapi");
 	{
 		char ft_sponge_c(unsigned int i, char c);
@@ -542,6 +567,7 @@ int	main(void)
 		emi_assert(strcmp(ft_strtrim(s6), "am i even valid") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strchrcount");
 	{
 		char s1[] = "mississippi";
@@ -550,6 +576,7 @@ int	main(void)
 		emi_assert(ft_strchrcount(s1, 'p') == 2);
 		emi_assert(ft_strchrcount(s1, 'a') == 0);
 	}
+#endif
 
 	emi_trial("ft_strsplit");
 	{
@@ -580,7 +607,7 @@ int	main(void)
 	emi_trial("ft_strsub");
 	{
 		char str[] = "baba is you";
-		
+
 		emi_assert(memcmp(ft_strsub(str, 5, 2), "is", 3) == 0);
 		emi_assert(memcmp(ft_strsub(str, 0, 4), "baba", 5) == 0);
 		emi_assert(memcmp(ft_strsub(str, 8, 3), "you", 4) == 0);
@@ -589,16 +616,17 @@ int	main(void)
 
 	emi_trial("ft_strjoin");
 	{
-		emi_assert(strcmp(ft_strjoin("hello, ", "world!"), 
+		emi_assert(strcmp(ft_strjoin("hello, ", "world!"),
 								"hello, world!") == 0);
-		emi_assert(strcmp(ft_strjoin("", "world!"), 
+		emi_assert(strcmp(ft_strjoin("", "world!"),
 								"world!") == 0);
-		emi_assert(strcmp(ft_strjoin("hello!", ""), 
+		emi_assert(strcmp(ft_strjoin("hello!", ""),
 								"hello!") == 0);
-		emi_assert(strcmp(ft_strjoin("", ""), 
+		emi_assert(strcmp(ft_strjoin("", ""),
 								"") == 0);
 	}
 
+#ifdef EXTRA
 	emi_trial("ft_strrev");
 	{
 		char s1[] = "hello, world";
@@ -626,6 +654,16 @@ int	main(void)
 		emi_assert(strcmp(ft_itoa(156), "156") == 0);
 	}
 
+	emi_trial("ft_print_memory");
+	{
+		char str[] = "hello, world, how are you doing today? hello my name is jeff uh yeah";
+		ft_print_memory(str, sizeof(str));
+	}
+	emi_trial("ft_lstlen");
+	{
+
+	}
+#endif
 	emi_debrief();
 	return (0);
 }

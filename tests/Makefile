@@ -63,6 +63,7 @@ clean:
 
 ftclean:
 	@echo "Cleaning libft"
+	@rm -rf libft.h
 	@rm -rf $(LIBFT)
 
 fclean: clean

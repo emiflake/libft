@@ -23,5 +23,5 @@ void	*ft_memchr(const void *str, int c, size_t n)
 		count++;
 	if (s[count] != c)
 		return (0);
-	return (void*)(&str[count]);
+	return (void*)(str + count);
 }
