@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/03/20 19:02:14 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 21:17:43 by nmartins      ########   odam.nl         */
+/*                                                              ::::::::      */
+/*   ft_atoi.c                                                :+:    :+:      */
+/*                                                           +:+              */
+/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
+/*                                                         +#+                */
+/*   Created: 2019/03/25 12:39:18 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/25 12:45:22 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 #include <limits.h>
 
 int		ft_atoi(const char *str)
