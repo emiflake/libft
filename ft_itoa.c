@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/03/22 12:24:02 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 15:25:56 by nmartins      ########   odam.nl         */
+/*                                                              ::::::::      */
+/*   ft_itoa.c                                                :+:    :+:      */
+/*                                                           +:+              */
+/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
+/*                                                         +#+                */
+/*   Created: 2019/03/25 16:57:48 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/25 16:57:50 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ char		*ft_itoa(int n)
 	int		size;
 	int		i;
 
-	long_n = (long)n;
-	if (long_n == 0)
+	if (!(long_n = (long)n))
 		return (ft_strdup("0"));
 	size = number_size(long_n);
 	out = (char*)malloc(sizeof(char) * (size + 1));

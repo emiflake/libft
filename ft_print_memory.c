@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                              ::::::::      */
+/*   ft_print_memory.c                                        :+:    :+:      */
+/*                                                           +:+              */
+/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
+/*                                                         +#+                */
+/*   Created: 2019/03/25 13:15:41 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/25 13:16:01 by nmartins            ########   odam.nl   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 #define HEX(i) (i <= 9 ? '0' + i : 'a' - 10 + i)
 
-static void puthex(unsigned char c)
+static void	puthex(unsigned char c)
 {
 	char fst;
 	char snd;
@@ -13,7 +25,7 @@ static void puthex(unsigned char c)
 	ft_putchar(snd);
 }
 
-static void putchars(char *chars, size_t starting_at, size_t len)
+static void	putchars(char *chars, size_t starting_at, size_t len)
 {
 	size_t i;
 
@@ -22,13 +34,13 @@ static void putchars(char *chars, size_t starting_at, size_t len)
 	{
 		if (ft_isprint(chars[i + starting_at]))
 			ft_putchar(chars[i + starting_at]);
-		else	
+		else
 			ft_putchar('.');
 		i++;
 	}
 }
 
-void ft_print_memory(void *addr, size_t len)
+void		ft_print_memory(void *addr, size_t len)
 {
 	char	*bytes;
 	size_t	line;

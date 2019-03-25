@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   run_all.c                                          :+:    :+:            */
+/*   run_all.c                                                :+:    :+:      */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/19 18:18:37 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 19:44:37 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/25 13:33:02 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,10 @@ int	main(void)
 			char *dest2 = malloc(sizeof(char) * len);
 			ft_memcpy(dest, src, len);
 			memcpy(dest2, src, len);
-			ft_memmove(dest + 30, dest, 4);
-			memmove(dest2 + 30, dest2, 4);
-			emi_assert(memcmp(dest, dest2, len + 1) == 0);
+			ft_memmove(dest + 20, dest, 4);
+			memmove(dest2 + 20, dest2, 4);
+			printf("'%s' vs '%s'\n", dest, dest2);
+			emi_assert(memcmp(dest, dest2, len) == 0);
 		}
 		{
 			char *src = "hiya, how are you 'dave'?";
@@ -659,11 +660,67 @@ int	main(void)
 		char str[] = "hello, world, how are you doing today? hello my name is jeff uh yeah";
 		ft_print_memory(str, sizeof(str));
 	}
-	emi_trial("ft_lstlen");
-	{
+#endif
 
+#define LISTS
+#ifdef LISTS
+	emi_trial("ft_lstnew");
+	{
+		t_list *lst;
+
+		lst = ft_lstnew("hello", 6);
+		emi_assert(strcmp(lst->content, "hello") == 0);
+		emi_assert(6 == lst->content_size);
 	}
+
+	emi_trial("ft_lstadd");
+	{
+		t_list *lst;
+
+		lst = ft_lstnew("hello", 6);
+		ft_lstadd(&lst, ft_lstnew("hello", 6));
+		emi_assert(memcmp(lst->next->content, "hello", 6) == 0);
+		emi_assert((size_t)lst);
+		emi_assert((size_t)lst->next);
+		emi_assert(!(size_t)lst->next->next);
+	}
+
+	emi_trial("ft_lstdelone");
+	{
+		void del_list(void *k, size_t l);
+		t_list *lst;
+
+		lst = ft_lstnew("hello", 6);
+		ft_lstadd(&lst, ft_lstnew("hi", 3));
+		ft_lstadd(&lst, ft_lstnew("hewwo", 6));
+
+		t_list *next;
+		next = lst->next;
+		ft_lstdelone(&lst, del_list);
+		emi_assert(!(size_t)lst);
+		emi_assert((size_t)next);
+		emi_assert((size_t)next->next);
+		
+	}
+
+	emi_trial("ft_lstdel");
+	{
+		void del_list(void *k, size_t l);
+		t_list *lst;
+
+		lst = ft_lstnew("hello", 6);
+		ft_lstadd(&lst, ft_lstnew("hello", 6));
+		ft_lstdel(&lst, del_list);
+		emi_assert(!lst);
+	}
+
 #endif
 	emi_debrief();
 	return (0);
+}
+
+void del_list(void *k, size_t l)
+{
+	(void)l;
+	free(k);
 }
