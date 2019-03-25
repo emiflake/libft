@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/25 16:31:40 by nmartins            ########   odam.nl    #
+#    Updated: 2019/03/25 16:36:28 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,6 @@ OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 SOURCES=$(patsubst %, %.c, $(OBJECT_NAMES))
 
 # colors feel free to add more as you need them
-#
 OK_COLOR=\x1b[32;01m
 RESET=\x1b[0m
 UNDERLINE=\x1b[4m
@@ -109,7 +108,7 @@ all: print_header $(NAME) success
 success:
 	@if [ $(shell printf  $$(($(num)))) -eq 0 ]; \
 	then \
-		echo "$(OK_COLOR)Was already compiled 💤$(RESET)"; \
+		echo "$(BLUE)Was already compiled 💤$(RESET)"; \
 	else \
 		echo "$(OK_COLOR)"; \
 		echo "$(OK_COLOR)Sucessfully compiled $(RESET)"; \

@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_putstr_fd.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/03/21 12:19:42 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 12:19:43 by nmartins      ########   odam.nl         */
+/*                                                              ::::::::      */
+/*   ft_putstr_fd.c                                           :+:    :+:      */
+/*                                                           +:+              */
+/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
+/*                                                         +#+                */
+/*   Created: 2019/03/25 13:10:50 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/25 16:53:41 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	size_t i;
-
-	i = 0;
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	write(fd, (void*)s, ft_strlen(s));
 }

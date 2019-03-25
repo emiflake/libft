@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/21 20:27:45 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/25 15:49:09 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,9 @@ ftclean:
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@rm -rf $(NAME)
+
+memcheck: re
+
 
 re: fclean ftclean all
 
