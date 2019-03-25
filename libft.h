@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 21:15:20 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/25 10:51:44 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 /*
 ** Section libc
 */
-
 void			*ft_memset(void *source, int constant, size_t size);
 void			ft_bzero(void *ptr, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -53,7 +52,6 @@ int				ft_tolower(int c);
 /*
 ** Section extra
 */
-
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
@@ -86,7 +84,6 @@ void			ft_putnbr_fd(int n, int fd);
 /*
 ** Section lists
 */
-
 typedef struct	s_list
 {
 	void			*content;
@@ -94,46 +91,37 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-t_list			*ft_lstnew(void const *content, size_t content_size); // TODO
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t)); // TODO
-void			ft_lstdel(t_list **alst, void (*del)(void *, size_t)); // TODO
-void			ft_lstadd(t_list **alst, t_list *new); // TODO
-void			ft_listiter(t_list *lst, void (*f)(t_list *elem)); // TODO
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem)); // TODO
+// TODO: write tests
+t_list			*ft_lstnew(void const *content, size_t content_size);
+// TODO: write tests
+void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+// TODO: write tests
+void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+// TODO: write tests
+void			ft_lstadd(t_list **alst, t_list *next);
+// TODO: write tests
+void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+// TODO: write tests
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+// TODO: write tests
 
 /*
-** Section stack
+** (Optional) Section helper functions
 */
-
-typedef struct	s_stack
-{
-	void			*content;
-	struct s_stack	*next;
-}				t_stack;
-
-void			ft_push(t_stack **stack, void const *content); // TODO
-void			*ft_pop(t_stack **stack); // TODO
-
-/*
-** (Optional) Section hashmaps
-*/
-
-/*
-** Section personal
-*/
-
 char			*ft_strtoup(char *str);
 void			*ft_memrcpy(void *dest, const void *src, size_t n);
 char			*ft_strtolo(char *str);
 char			*ft_str_take_while(const char *source, int (*f)(int));
 char			*ft_str_drop_while(const char *source, int (*f)(int));
 int				ft_iswhite(int c);
-void			ft_print_memory(void *addr, size_t size); // TODO
+void			ft_print_memory(void *addr, size_t size);
 size_t			ft_strchrcount(const char *str, char search);
 char			*ft_strrev(char *str);
+
+
+// TODO: write tests
 void			*ft_realloc(
 					void *mem,
 					size_t s_len,
 					size_t n_len);
-
 #endif
