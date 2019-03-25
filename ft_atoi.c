@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 19:02:14 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 19:58:45 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 21:17:43 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int		ft_atoi(const char *str)
 	}
 	while (ft_isdigit(*str))
 	{
-		if (result > LONG_MAX || result < LONG_MIN)
-			return (-1);
-		if (result > INT_MAX || result < INT_MIN)
-			return (0);
 		result = result * 10 + (*str - '0');
 		str++;
 	}

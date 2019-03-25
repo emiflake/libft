@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/22 16:53:56 by nmartins      ########   odam.nl          #
+#    Updated: 2019/03/23 21:15:18 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ OBJECT_NAMES=ft_memset \
 			 ft_iswhite \
 			 ft_strtolo \
 			 ft_strtoup \
+			 ft_memrcpy \
 			 ft_strchrcount \
 			 ft_strrev
 			 
