@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/22 16:17:21 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/23 21:15:20 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char			*ft_strcat(char *s1, const char *s2);
 size_t			ft_strlcat(
 					char *dst,
 					const char *src,
-					size_t size); // TODO: wtf
+					size_t size);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
 char			*ft_strchr(const char *haystack, int needle);
 char			*ft_strrchr(const char *s, int c);
@@ -118,22 +118,17 @@ void			*ft_pop(t_stack **stack); // TODO
 ** (Optional) Section hashmaps
 */
 
-// TODO
-
 /*
 ** Section personal
 */
 
 char			*ft_strtoup(char *str);
+void			*ft_memrcpy(void *dest, const void *src, size_t n);
 char			*ft_strtolo(char *str);
 char			*ft_str_take_while(const char *source, int (*f)(int));
 char			*ft_str_drop_while(const char *source, int (*f)(int));
 int				ft_iswhite(int c);
 void			ft_print_memory(void *addr, size_t size); // TODO
-int				ft_atoi_base_i(char *str, int base); // TODO
-int				ft_atoi_base_s(char *str, char *base); // TODO
-char			*ft_itoa_base_i(int n, int base); // TODO
-char			*ft_itoa_base_s(int n, char *base); // TODO
 size_t			ft_strchrcount(const char *str, char search);
 char			*ft_strrev(char *str);
 void			*ft_realloc(
@@ -141,8 +136,4 @@ void			*ft_realloc(
 					size_t s_len,
 					size_t n_len);
 
-
-void			*ft_foldr1(
-					t_list *lst,
-					void *(*reductor(void *, size_t, void*))); // TODO
 #endif
