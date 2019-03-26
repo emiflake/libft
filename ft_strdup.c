@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_bzero.c                                         :+:    :+:            */
+/*   ft_strdup.c                                             :+:    :+:       */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/02/26 17:43:11 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/03/26 14:27:29 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdlib.h>
 
-char	*ft_strdup(char *str)
+char	*ft_strdup(const char *str)
 {
 	size_t	len;
 	char	*out;
