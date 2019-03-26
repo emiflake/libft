@@ -28,7 +28,7 @@ static char		*ft_str_take_while_neq(const char *source, char c)
 	return (out);
 }
 
-size_t			ft_count_sections(char const *s, char c)
+static size_t	ft_count_sections(char const *s, char c)
 {
 	size_t count;
 	size_t i;

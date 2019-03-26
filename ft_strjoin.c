@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	slen1 = ft_strlen(s1);
 	slen2 = ft_strlen(s2);
-	out = (char*)ft_strnew(slen1 + slen2 + 1);
+	out = (char*)ft_strnew(slen1 + slen2);
 	if (!out)
 		return (0);
 	ft_memcpy(out, s1, slen1);

@@ -18,6 +18,9 @@ size_t			ft_strchrcount(const char *str, char search)
 
 	count = 0;
 	while (*str)
-		count += (*(str++) == search);
+	{
+		count += (*str == search);
+		str++;
+	}
 	return (count);
 }
