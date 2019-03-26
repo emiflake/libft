@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/02/26 17:43:11 by nmartins      ########   odam.nl         */
+/*                                                             ::::::::       */
+/*   ft_strlen.c                                             :+:    :+:       */
+/*                                                          +:+               */
+/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
+/*                                                        +#+                 */
+/*   Created: 2019/03/26 18:55:47 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/26 18:55:58 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ size_t	ft_strlen(const char *s)
 
 	st = (char*)s;
 	while (*s)
-		s++;
+		++s;
 	return (s - st);
 }

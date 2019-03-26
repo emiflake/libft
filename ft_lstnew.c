@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                              ::::::::      */
-/*   ft_lstnew.c                                              :+:    :+:      */
-/*                                                           +:+              */
-/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
-/*                                                         +#+                */
-/*   Created: 2019/03/25 13:13:40 by nmartins            #+#    #+#           */
-/*   Updated: 2019/03/25 13:13:48 by nmartins            ########   odam.nl   */
+/*                                                        ::::::::            */
+/*   ft_lstnew.c                                             :+:    :+:       */
+/*                                                     +:+                    */
+/*   By: nmartins <nmartins@student.codam.n>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/03/26 17:59:01 by nmartins      #+#    #+#                 */
+/*   Updated: 2019/03/26 18:01:58 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 		return (0);
 	if (!content)
 	{
-		new_list->content = 0;
+		new_list->content = NULL;
 		new_list->content_size = 0;
 	}
 	else
@@ -37,5 +37,6 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 		ft_memcpy(new_list->content, content, content_size);
 		new_list->content_size = content_size;
 	}
+	new_list->next = 0;
 	return (new_list);
 }
