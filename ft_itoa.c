@@ -13,9 +13,8 @@
 #include "libft.h"
 
 #include <stdlib.h>
-#include <limits.h>
 
-static int	number_size(int n)
+static int	number_size(long n)
 {
 	int	count;
 
@@ -39,25 +38,25 @@ char		*ft_itoa(int n)
 	char	*out;
 	int		size;
 	int		i;
-
 	if (!(long_n = (long)n))
 		return (ft_strdup("0"));
 	size = number_size(long_n);
-	out = (char*)malloc(sizeof(char) * (size + 1));
+	out = ft_strnew(size);
 	if (!out)
 		return (0);
 	i = 0;
 	if (long_n < 0)
 	{
-		out[i++] = '-';
+		out[i] = '-';
+		i++;
 		long_n = -long_n;
 	}
 	while (long_n > 0)
 	{
-		out[i++] = '0' + long_n % 10;
+		out[i] = '0' + long_n % 10;
+		i++;
 		long_n /= 10;
 	}
-	out[i] = '\0';
 	ft_strrev(out[0] == '-' ? out + 1 : out);
 	return (out);
 }

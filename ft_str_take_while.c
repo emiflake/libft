@@ -23,6 +23,8 @@ char	*ft_str_take_while(const char *source, int (*f)(int))
 	while (source[i] && f(source[i]))
 		i++;
 	out = (char *)malloc(i + 1);
+	if (!out)
+		return (0);
 	ft_memcpy(out, source, i);
 	return (out);
 }

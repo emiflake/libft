@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-#include <stdlib.h>
-
 /*
 ** Same as ft_memcpy, but guarantees overlap protection
 ** through some simple checking for copy order.

@@ -24,7 +24,7 @@ int		ft_atoi(const char *str)
 		str++;
 	if (*str == '+')
 		str++;
-	if (*str == '-')
+	else if (*str == '-')
 	{
 		mag = -1;
 		str++;
