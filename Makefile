@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                                 :+:    :+:       #
-#                                                      +:+                     #
-#    By: nmartins <nmartins@student.codam.n>          +#+                      #
-#                                                    +#+                       #
-#    Created: 2019/02/20 18:05:21 by nmartins      #+#    #+#                  #
-#    Updated: 2019/03/25 16:36:28 by nmartins            ########   odam.nl    #
+#                                                              ::::::::        #
+#    Makefile                                                :+:    :+:        #
+#                                                           +:+                #
+#    By: nmartins <nmartins@student.codam.nl>              +#+                 #
+#                                                         +#+                  #
+#    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
+#    Updated: 2019/03/26 19:10:10 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ RED=\x1b[31m
 #########
 # rules #
 #########
-all: print_header $(NAME) success
+all: $(NAME)
 success:
 	@if [ $(shell printf  $$(($(num)))) -eq 0 ]; \
 	then \

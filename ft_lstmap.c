@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                              ::::::::      */
-/*   ft_lstmap.c                                              :+:    :+:      */
-/*                                                           +:+              */
-/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
-/*                                                         +#+                */
-/*   Created: 2019/03/25 13:16:37 by nmartins            #+#    #+#           */
-/*   Updated: 2019/03/25 13:16:38 by nmartins            ########   odam.nl   */
+/*                                                             ::::::::       */
+/*   ft_lstmap.c                                             :+:    :+:       */
+/*                                                          +:+               */
+/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
+/*                                                        +#+                 */
+/*   Created: 2019/03/26 18:01:25 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/26 18:01:27 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list *new;
 
-	while (lst)
-	{
-		ft_lstadd(&new, f(lst));
-		lst = lst->next;
-	}
+	new = f(lst);
+	if (lst->next)
+		new->next = ft_lstmap(lst->next, f);
 	return (new);
 }
