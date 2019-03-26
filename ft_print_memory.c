@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                              ::::::::      */
-/*   ft_print_memory.c                                        :+:    :+:      */
-/*                                                           +:+              */
-/*   By: nmartins <nmartins@student.codam.nl>               +#+               */
-/*                                                         +#+                */
-/*   Created: 2019/03/25 13:15:41 by nmartins            #+#    #+#           */
-/*   Updated: 2019/03/25 13:16:01 by nmartins            ########   odam.nl   */
+/*                                                             ::::::::       */
+/*   ft_print_memory.c                                       :+:    :+:       */
+/*                                                          +:+               */
+/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
+/*                                                        +#+                 */
+/*   Created: 2019/03/26 14:34:43 by nmartins            #+#    #+#           */
+/*   Updated: 2019/03/26 14:36:31 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#define HEX(i) (i <= 9 ? '0' + i : 'a' - 10 + i)
+static char	hex(unsigned char i)
+{
+	return (i <= 9 ? '0' + i : 'a' - 10 + i);
+}
 
 static void	puthex(unsigned char c)
 {
 	char fst;
 	char snd;
 
-	fst = HEX(c / 16);
-	snd = HEX(c % 16);
+	fst = hex(c / 16);
+	snd = hex(c % 16);
 	ft_putchar(fst);
 	ft_putchar(snd);
 }
