@@ -6,7 +6,7 @@
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 15:29:41 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/26 14:16:48 by nmartins            ########   odam.nl   */
+/*   Updated: 2019/04/01 19:32:25 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,6 @@ void			*ft_realloc(
 					void *mem,
 					size_t s_len,
 					size_t n_len);
+void			ft_strreplace(char **old, char *new);
+
 #endif
