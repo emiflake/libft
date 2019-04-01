@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strnequ.c                                       :+:    :+:            */
+/*   ft_strnequ.c                                            :+:    :+:       */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/21 20:24:33 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 20:28:22 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/04/01 19:26:06 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int				ft_strnequ(char const *s1, char const *s2, size_t n)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (s1[i] == s2[i]);
 }

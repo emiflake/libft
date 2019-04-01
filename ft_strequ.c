@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strequ.c                                        :+:    :+:            */
+/*   ft_strequ.c                                             :+:    :+:       */
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/21 20:23:13 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/21 20:28:22 by nmartins      ########   odam.nl         */
+/*   Updated: 2019/04/01 19:26:54 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int				ft_strequ(char const *s1, char const *s2)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (s1[i] == s2[i]);
 }

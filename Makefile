@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.nl>              +#+                 #
 #                                                         +#+                  #
 #    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/03/26 19:10:10 by nmartins            ########   odam.nl    #
+#    Updated: 2019/03/27 18:57:42 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ OBJECT_NAMES=ft_memset \
 CC=gcc
 INCLUDES=-I./
 SRC=./
-CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
+CFLAGS=-Werror -Wall -Wextra $(INCLUDES) -O2
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 SOURCES=$(patsubst %, %.c, $(OBJECT_NAMES))
 
@@ -104,7 +104,7 @@ RED=\x1b[31m
 #########
 # rules #
 #########
-all: $(NAME)
+all: print_header $(NAME) success
 success:
 	@if [ $(shell printf  $$(($(num)))) -eq 0 ]; \
 	then \
@@ -149,3 +149,4 @@ fclean: clean
 
 re: fclean all
 
+.SECONDARY: $(OBJECTS)
