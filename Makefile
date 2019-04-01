@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.nl>              +#+                 #
 #                                                         +#+                  #
 #    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/03/27 18:57:42 by nmartins      ########   odam.nl          #
+#    Updated: 2019/04/01 19:32:43 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,8 @@ OBJECT_NAMES=ft_memset \
 			 ft_memrcpy \
 			 ft_strchrcount \
 			 ft_strrev \
-			 ft_print_memory
+			 ft_print_memory \
+			 ft_strreplace
 
 
 # do not configure
