@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.nl>              +#+                 #
 #                                                         +#+                  #
 #    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/04/01 19:32:43 by nmartins            ########   odam.nl    #
+#    Updated: 2019/04/16 17:25:22 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ OBJECT_NAMES=ft_memset \
 CC=gcc
 INCLUDES=-I./
 SRC=./
-CFLAGS=-Werror -Wall -Wextra $(INCLUDES) -O2
+CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 SOURCES=$(patsubst %, %.c, $(OBJECT_NAMES))
 
@@ -105,24 +105,7 @@ RED=\x1b[31m
 #########
 # rules #
 #########
-all: print_header $(NAME) success
-success:
-	@if [ $(shell printf  $$(($(num)))) -eq 0 ]; \
-	then \
-		echo "$(BLUE)Was already compiled 💤$(RESET)"; \
-	else \
-		echo "$(OK_COLOR)"; \
-		echo "$(OK_COLOR)Sucessfully compiled $(RESET)"; \
-		printf "Made $(UNDERLINE)$(BLUE)%d$(RESET) objects 🔥\n" $(shell printf $$(($(num)))); \
-	fi
-
-print_header:
-	@$(eval num=0)
-	@echo "$(OK_COLOR)"
-	@echo "o--------------------o"
-	@echo "| Making libft... 🐈  |"
-	@echo "o--------------------o"
-	@echo "$(RESET)"
+all: $(NAME) 
 
 debug:
 	$(CC) -o $(NAME) $^ $(CFLAGS) -g
@@ -137,15 +120,15 @@ so:
 
 %.o: $(SRC)/%.c
 	@$(eval num=$(shell echo $$(($(num)+1))))
-	@printf " - Making object $(UNDERLINE)$(BLUE)$^$(RESET)\n"
+	@printf " λ Making object $(UNDERLINE)$(BLUE)$^$(RESET)\n"
 	@$(CC) -c -o $@ $^ $(CFLAGS)
 
 clean:
-	@echo "🗑  $(RED)Cleaning objects$(RESET)"
+	@echo "$(RED)Cleaning objects$(RESET)"
 	@rm -rf $(OBJECTS)
 
 fclean: clean
-	@echo "🗑  $(RED)Cleaning $(NAME)"
+	@echo "$(RED)Cleaning $(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all
