@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.nl>              +#+                 #
 #                                                         +#+                  #
 #    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/04/16 17:25:22 by nmartins            ########   odam.nl    #
+#    Updated: 2019/04/18 17:49:13 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,10 @@ OBJECT_NAMES=ft_memset \
 			 ft_strchrcount \
 			 ft_strrev \
 			 ft_print_memory \
-			 ft_strreplace
+			 ft_strreplace \
+			 ft_abs \
+			 ft_max \
+			 ft_min
 
 
 # do not configure
@@ -128,7 +131,7 @@ clean:
 	@rm -rf $(OBJECTS)
 
 fclean: clean
-	@echo "$(RED)Cleaning $(NAME)"
+	@echo "$(RED)Cleaning $(NAME)$(RESET)"
 	@rm -rf $(NAME)
 
 re: fclean all
