@@ -6,7 +6,7 @@
 #    By: nmartins <nmartins@student.codam.nl>              +#+                 #
 #                                                         +#+                  #
 #    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/04/18 17:49:13 by nmartins            ########   odam.nl    #
+#    Updated: 2019/04/18 17:56:21 by nmartins            ########   odam.nl    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@
 # configure
 NAME=libft.a
 
-OBJECT_NAMES=ft_memset \
+OBJECT_NAMES=\
+			 ft_memset \
 			 ft_bzero \
 			 ft_memcpy \
 			 ft_memccpy \
@@ -87,7 +88,8 @@ OBJECT_NAMES=ft_memset \
 			 ft_strreplace \
 			 ft_abs \
 			 ft_max \
-			 ft_min
+			 ft_min \
+			 get_next_line \
 
 
 # do not configure
