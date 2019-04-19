@@ -90,7 +90,8 @@ OBJECT_NAMES=\
 			 ft_max \
 			 ft_min \
 			 get_next_line \
-
+			 ft_globmatch \
+			 ft_globsearch \
 
 # do not configure
 CC=gcc

@@ -120,4 +120,7 @@ int				ft_abs(int a);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 
+int				ft_globmatch(const char *orig, const char *pat);
+const char		*ft_globsearch(const char *orig, const char *pat);
+
 #endif
