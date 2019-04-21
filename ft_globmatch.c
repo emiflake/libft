@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                             ::::::::       */
+/*   ft_globmatch.c                                          :+:    :+:       */
+/*                                                          +:+               */
+/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
+/*                                                        +#+                 */
+/*   Created: 2019/04/21 17:40:11 by nmartins            #+#    #+#           */
+/*   Updated: 2019/04/21 17:42:30 by nmartins            ########   odam.nl   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -20,16 +32,20 @@
 ** "Hello, world..." => 0
 ** "Hi world"        => 0
 */
-int			ft_globmatch(const char *orig, const char *pat)
+
+int		ft_globmatch(const char *orig, const char *pat)
 {
 	if (!*orig && !*pat)
 		return (1);
 	if (*orig && *pat && *orig == *pat)
 		return (ft_globmatch(orig + 1, pat + 1));
 	if (*orig && *pat && *pat == '^')
-		return (ft_iswhite(*orig)
-				? ft_globmatch(orig + 1, pat)
-				: ft_globmatch(orig, pat + 1));
+	{
+		if (ft_iswhite(*orig))
+			return (ft_globmatch(orig + 1, pat));
+		else
+			return (ft_globmatch(orig, pat + 1));
+	}
 	if (*orig && *pat && *pat == '?')
 		return (ft_globmatch(orig + 1, pat + 1) || ft_globmatch(orig, pat + 1));
 	if (*orig && *pat && *pat == '*')
@@ -40,4 +56,3 @@ int			ft_globmatch(const char *orig, const char *pat)
 		return (ft_globmatch(orig, pat + 1));
 	return (0);
 }
-
