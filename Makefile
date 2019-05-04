@@ -86,6 +86,7 @@ OBJECT_NAMES=\
 			 ft_strrev \
 			 ft_print_memory \
 			 ft_strreplace \
+			 ft_realloc \
 			 ft_abs \
 			 ft_max \
 			 ft_min \
