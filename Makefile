@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                              ::::::::        #
-#    Makefile                                                :+:    :+:        #
-#                                                           +:+                #
-#    By: nmartins <nmartins@student.codam.nl>              +#+                 #
-#                                                         +#+                  #
-#    Created: 2019/03/26 19:10:08 by nmartins            #+#    #+#            #
-#    Updated: 2019/04/18 17:56:21 by nmartins            ########   odam.nl    #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: nmartins <nmartins@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2019/03/26 19:10:08 by nmartins       #+#    #+#                 #
+#    Updated: 2019/05/20 15:53:39 by nmartins      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,8 @@ OBJECT_NAMES=\
 CC=gcc
 INCLUDES=-I./
 SRC=./
-CFLAGS=-Werror -Wall -Wextra $(INCLUDES)
+EXTRA=
+CFLAGS=-Werror -Wall -Wextra $(INCLUDES) $(EXTRA)
 OBJECTS=$(patsubst %, %.o, $(OBJECT_NAMES))
 SOURCES=$(patsubst %, %.c, $(OBJECT_NAMES))
 
