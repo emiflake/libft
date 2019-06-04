@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: nmartins <nmartins@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 12:26:13 by nmartins      #+#    #+#                 */
-/*   Updated: 2019/03/23 19:45:22 by nmartins      ########   odam.nl         */
+/*   Created: 2019/03/22 12:26:13 by nmartins       #+#    #+#                */
+/*   Updated: 2019/06/04 14:11:04 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,45 @@
 
 #include <stdlib.h>
 
-static char		*ft_str_take_while_neq(const char *source, char c)
+static int		word_count(const char *s, char c)
 {
-	size_t	i;
-	char	*out;
-
-	i = 0;
-	while (source[i] && c != source[i])
-		i++;
-	out = (char *)malloc(i + 1);
-	ft_memcpy(out, source, i);
-	out[i] = '\0';
-	return (out);
+	if (s[0] == '\0')
+		return (0);
+	if (s[0] != c && (s[1] == c || s[1] == '\0'))
+		return (word_count(s + 1, c) + 1);
+	return (word_count(s + 1, c));
 }
 
-static size_t	ft_count_sections(char const *s, char c)
+static int		char_index(const char *s, char c)
 {
-	size_t count;
-	size_t i;
+	char *char_ptr;
 
-	count = 0;
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
-	{
-		while (s[i] && s[i] != c)
-			i++;
-		while (s[i] && s[i] == c)
-			i++;
-		count++;
-	}
-	return (count);
+	char_ptr = ft_strchr(s, c);
+	if (char_ptr == NULL)
+		char_ptr = (char *)s + ft_strlen(s);
+	return (char_ptr - s);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static void		ft_strsplit_c(char **words, const char *s, char c)
+{
+	int		section_len;
+
+	if (*s == '\0')
+		return ;
+	if (*s == c)
+		return (ft_strsplit_c(words, s + 1, c));
+	section_len = char_index(s, c);
+	*words = ft_strsub(s, 0, section_len);
+	ft_strsplit_c(words + 1, s + section_len, c);
+}
+
+char			**ft_strsplit(const char *s, char c)
 {
 	char	**words;
-	size_t	word_count;
-	size_t	i;
-	size_t	words_used;
 
-	word_count = ft_count_sections(s, c);
-	words = (char**)malloc(sizeof(char*) * (word_count + 1));
-	if (!words)
-		return (0);
-	i = 0;
-	words_used = 0;
-	while (words_used <= word_count)
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		words[words_used] = ft_str_take_while_neq(&s[i], c);
-		words_used++;
-		while (s[i] != c && s[i])
-			i++;
-		while (s[i] == c && s[i])
-			i++;
-	}
-	words[words_used - 1] = 0;
+	words = (char **)ft_memalloc(sizeof(*words) * (word_count(s, c) + 1));
+	if (words == NULL)
+		return (NULL);
+	ft_strsplit_c(words, s, c);
 	return (words);
 }
