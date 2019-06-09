@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                             ::::::::       */
+/*                                                        ::::::::            */
 /*   get_next_line.c                                         :+:    :+:       */
-/*                                                          +:+               */
-/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
-/*                                                        +#+                 */
-/*   Created: 2019/03/28 15:21:24 by nmartins            #+#    #+#           */
-/*   Updated: 2019/04/15 14:28:18 by nmartins            ########   odam.nl   */
+/*                                                     +:+                    */
+/*   By: nmartins <nmartins@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/03/28 15:21:24 by nmartins       #+#    #+#                */
+/*   Updated: 2019/06/09 15:19:36 by nmartins            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <string.h>
 
-int	read_line(const int fd, char **write_to)
+static int	ft_read_line(const int fd, char **write_to)
 {
 	char	*buf;
 	ssize_t	bytes_read;
@@ -42,11 +42,11 @@ int	read_line(const int fd, char **write_to)
 	return (0);
 }
 
-int	get_next_line_c(const int fd, char **line, char **target)
+static int	get_next_line_c(const int fd, char **line, char **target)
 {
 	size_t		len;
 
-	if (read_line(fd, target) == -1)
+	if (ft_read_line(fd, target) == -1)
 		return (-1);
 	len = 0;
 	while ((*target)[len] && (*target)[len] != '\n')
@@ -64,7 +64,7 @@ int	get_next_line_c(const int fd, char **line, char **target)
 	return (1);
 }
 
-int	get_next_line(const int fd, char **line)
+int			ft_get_next_line(const int fd, char **line)
 {
 	static char	*cache[12000];
 	char		**target;

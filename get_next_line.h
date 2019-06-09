@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                             ::::::::       */
-/*   get_next_line.h                                         :+:    :+:       */
-/*                                                          +:+               */
-/*   By: nmartins <nmartins@student.codam.nl>              +#+                */
-/*                                                        +#+                 */
-/*   Created: 2019/03/26 17:34:42 by nmartins            #+#    #+#           */
-/*   Updated: 2019/04/13 16:53:37 by nmartins      ########   odam.nl         */
+/*                                                        ::::::::            */
+/*   get_next_line.h                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: nmartins <nmartins@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/03/26 17:34:42 by nmartins       #+#    #+#                */
+/*   Updated: 2019/06/09 13:58:10 by nmartins      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@
 /*
 ** -------------------------------------
 */
-int	get_next_line(const int fd, char **line);
+int	ft_get_next_line(const int fd, char **line);
 
 #endif
