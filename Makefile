@@ -132,11 +132,11 @@ so:
 	@$(CC) -c -o $@ $^ $(CFLAGS)
 
 clean:
-	@echo "$(RED)Cleaning objects$(RESET)"
+	@printf "$(RED)Cleaning objects$(RESET)\n"
 	@rm -rf $(OBJECTS)
 
 fclean: clean
-	@echo "$(RED)Cleaning $(NAME)$(RESET)"
+	@printf "$(RED)Cleaning $(NAME)$(RESET)\n"
 	@rm -rf $(NAME)
 
 re: fclean all
